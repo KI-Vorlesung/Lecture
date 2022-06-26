@@ -4,7 +4,16 @@ title: "NN8 - Performanzanalyse"
 menuTitle: "NN8 - Performanzanalyse"
 author: "Canan Yıldız (Türkisch-Deutsche Universität)"
 weight: 8
-outcomes: true
+outcomes:
+  - k2: "Performanzmetriken für die Evaluierung von Klassifizierungsmodellen"
+  - k2: "Wahrheitsmatrix (engl. Confusion Matrix)"
+  - k2: "Treffergenauigkeit (engl. Accuracy)"
+  - k2: "Precision (engl. Precision)"
+  - k2: "Recall"
+  - k2: "$F_1$-Score (Harmonisches Mittel)"
+  - k3: "Berechnung und Deutung von Precision und Recall"
+  - k3: "Berechnung und Deutung des $F_1$-Scores"
+  - k3: "Einsatz bei Evaluierung und Auswahl von Modellen"
 # readings:
 #   - key: "Russell2020"
 #     comment: "Kapitel 2 und 3"
@@ -13,12 +22,19 @@ outcomes: true
 #   - link: XYZ
 #     name: "Testquizz (URL from 'Invite more Players')"
 youtube:
-    - id: T-WYL28iwdU
-    - id: fpsNzn4Moow
-    - id: Wx_HAuIXTAQ
-    - id: UAV7EpdIe6Q
-    - id: vsmoYiArtrA
-sketch: false
+    - link: "https://youtu.be/T-WYL28iwdU"
+      name: "NN8.1 - Confusion Matrix"
+    - link: "https://youtu.be/fpsNzn4Moow"
+      name: "NN8.2 - Precision und Recall"
+    - link: "https://youtu.be/Wx_HAuIXTAQ"
+      name: "NN8.3 - Precision Recall Trade-off"
+    - link: "https://youtu.be/UAV7EpdIe6Q"
+      name: "NN8.4 - F1-Score"
+    - link: "https://youtu.be/vsmoYiArtrA"
+      name: "NN8.5 - Harmonisches Mittel- Intuition"
+attachments:
+  - link: "https://github.com/KI-Vorlesung/Lecture/blob/master/markdown/nn/files/NN8-Performanzanalyse.pdf"
+    name: "NN8-Performanzanalyse.pdf"
 ---
 
 
@@ -41,7 +57,7 @@ sketch: false
     $$ Accuracy = \frac{TP+TN}{TP+TN+FP+FN} $$
 
 *   Accuracy vermittelt ein falsches Bild des Erfolges bei unausgewogenen Datensätzen \
-    Beispiel: 
+    Beispiel:
     *   Klasse 1 hat 10, Klasse 0 hat 990 Beispiele.
     *   Ein Modell, das immer 0 ausgibt, hat $990/1000 = 0.99$ Treffergenauigkeit, ist aber offensichtlich kein gutes Modell!
 
@@ -64,10 +80,10 @@ sketch: false
 *   Accuracy of **positive examples**.
 
 #### Precision-Recall Trade-off
-*   Ein gutes Modell sollte hohe Precision und zugleich hohes Recall haben. 
+*   Ein gutes Modell sollte hohe Precision und zugleich hohes Recall haben.
 *   Man kann die Precision eines Modells beliebig erhöhen (durch das Vergrößern des Schwellenwertes bei der Klassifizierung), jedoch wird dabei der Recall abnehmen.
 *   Genau so kann man den Recall eines Modells beliebig erhöhen (durch das Verkleinern des Schwellenwertes bei der Klassifizierung), jedoch wird dabei die Precision abnehmen.
-*   Es gilt ein gutes Trade-off zu finden. 
+*   Es gilt ein gutes Trade-off zu finden.
 *   Eine Zwei-Zahlen-Metrik erschwert den Entscheidungsprozess bei Evaluierung und Modellauswahl.
 
 #### $F_1$-Score (Harmonisches Mittel)

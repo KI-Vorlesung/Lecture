@@ -4,7 +4,11 @@ title: "NN4 - Overfitting und Regularisierung"
 menuTitle: "NN4 - Overfitting"
 author: "Canan Yıldız (Türkisch-Deutsche Universität)"
 weight: 4
-outcomes: true
+outcomes:
+  - k2: "Erhöhung der Modell-Komplexität durch Einführung von Merkmalen höherer Ordnung"
+  - k2: "Unter- und Überanpassung"
+  - k2: "Regularisierung (Auswirkung auf Gewichte und Modell)"
+  - k3: "Gradientenabstieg für regularisierte logistische Regression"
 readings:
     - key: "AbuMostafa2012"
       comment: "Kapitel 4"
@@ -14,8 +18,13 @@ readings:
 assignments:
     - topic: sheet08
 youtube:
-    - id: KJLT-h_ChRo
-    - id: BW91MYPUH_k
+    - link: "https://youtu.be/KJLT-h_ChRo"
+      name: "NN4.1 - Nichtlineare Modelle"
+    - link: "https://youtu.be/BW91MYPUH_k"
+      name: "NN4.2 - Overfitting und Regularisierung"
+attachments:
+  - link: "https://github.com/KI-Vorlesung/Lecture/blob/master/markdown/nn/files/NN4-Nichtlineare_Modelle_und_Overfitting.pdf"
+    name: "NN4-Nichtlineare_Modelle_und_Overfitting.pdf"
 ---
 
 

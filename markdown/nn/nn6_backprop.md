@@ -4,7 +4,11 @@ title: "NN6 - Backpropagation"
 menuTitle: "NN6 - Backpropagation"
 author: "Canan Yıldız (Türkisch-Deutsche Universität)"
 weight: 6
-outcomes: true
+outcomes:
+  - k2: "Forwärts- und Rückwärtslauf in Matrix Notation mit mehreren Datenpunkten als Eingabe"
+  - k2: "Ableitung der Aktivierungsfunktionen"
+  - k3: "Berechnung der partiellen Ableitungen"
+  - k3: "Rückwärtslauf (backpropagation) für ein gegebenes MLP"
 # readings:
 #   - key: "Russell2020"
 #     comment: "Kapitel 2 und 3"
@@ -15,10 +19,15 @@ outcomes: true
 assignments:
     - topic: sheet09
 youtube:
-    - id: G9x75THjueQ
-    - id: 9Ku0dJ8pGrU
-    - id: uvT4WPIIkwQ
-sketch: false
+    - link: "https://youtu.be/G9x75THjueQ"
+      name: "NN6.1 - MLP Backpropagation 1"
+    - link: "https://youtu.be/9Ku0dJ8pGrU"
+      name: "NN6.2 - MLP Backpropagation 2"
+    - link: "https://youtu.be/uvT4WPIIkwQ"
+      name: "NN6.3 - MLP Zusammenfassung"
+attachments:
+  - link: "https://github.com/KI-Vorlesung/Lecture/blob/master/markdown/nn/files/NN6-MLP_Backpropagation.pdf"
+    name: "NN6-MLP_Backpropagation.pdf"
 ---
 
 

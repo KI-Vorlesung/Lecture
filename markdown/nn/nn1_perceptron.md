@@ -4,7 +4,13 @@ title: "NN1 - Das Perzeptron"
 menuTitle: "NN1 - Perzeptron"
 author: "Canan Yıldız (Türkisch-Deutsche Universität)"
 weight: 1
-outcomes: true
+outcomes:
+  - k2: "Arten des maschinellen Lernens"
+  - k2: "Formalisierung eines ML-Problems, insbesondere Klassifizierung: Datensatz, Merkmalraum, Hyphotesenfunktion, Zielfunktion"
+  - k2: "Perzeptron als linearer Klassifizierer"
+  - k2: "Entscheidungsgrenze"
+  - k3: "Berechnung der Entscheidungsgrenze"
+  - k3: "Perzeptron Lernalgorithmus"
 # readings:
 #   - key: "Russell2020"
 #     comment: "Kapitel 2 und 3"
@@ -15,11 +21,19 @@ outcomes: true
 assignments:
     - topic: sheet06
 youtube:
-    - id: IJdiwITTC9Y
-    - id: oWcvFyLgqYc
-    - id: ZvWpI0Doocc
-    - id: 8Rdw2NBCCJk
-    - id: JD8Qsg8_kQI
+    - link: "https://youtu.be/IJdiwITTC9Y"
+      name: "NN1.1 - Einführung"
+    - link: "https://youtu.be/oWcvFyLgqYc"
+      name: "NN1.1 - Einführung"
+    - link: "https://youtu.be/ZvWpI0Doocc"
+      name: "NN1.3 - Das Perzeptron Modell"
+    - link: "https://youtu.be/8Rdw2NBCCJk"
+      name: "NN1.4 - Perzeptron Beispiel"
+    - link: "https://youtu.be/JD8Qsg8_kQI"
+      name: "NN1.5 - Der Perzeptron Lernalgorithmus"
+attachments:
+  - link: "https://github.com/KI-Vorlesung/Lecture/blob/master/markdown/nn/files/NN1-Das_Perzeptron.pdf"
+    name: "NN1-Das_Perzeptron.pdf"
 ---
 
 

@@ -4,7 +4,12 @@ title: "NN3 - Logistische Regression"
 menuTitle: "NN3 - Logistische Regression"
 author: "Canan Yıldız (Türkisch-Deutsche Universität)"
 weight: 3
-outcomes: true
+outcomes:
+  - k2: "Logistische Regression aus Sicht neuronaler Netze: Graphische Darstellung, Vergleich mit Perzeptron und linearer Regression"
+  - k2: "Formalisierung"
+  - k2: "Sigmoid-Aktivierungsfunktion"
+  - k2: "Verlust- und Kosten (Cross-Entropy Loss)"
+  - k3: "Gradientenabstieg für logistische Regression"
 # readings:
 #   - key: "Russell2020"
 #     comment: "Kapitel 2 und 3"
@@ -15,10 +20,17 @@ outcomes: true
 assignments:
     - topic: sheet07
 youtube:
-    - id: GpJmjrqA5RY
-    - id: z-jFZeNWMRc
-    - id: ruuCKupOhCE
-    - id: kPAZsr-r1LA
+    - link: "https://youtu.be/GpJmjrqA5RY"
+      name: "NN3.1 - Logistische Regression - Intro"
+    - link: "https://youtu.be/z-jFZeNWMRc"
+      name: "NN3.2 - Logistische Regression - Hypothesenfunktion und Bsp"
+    - link: "https://youtu.be/ruuCKupOhCE"
+      name: "NN3.3 - Logistische Regression - Verlust und Kosten"
+    - link: "https://youtu.be/kPAZsr-r1LA"
+      name: "NN3.4 - Logistische Regression - Gradientenabstieg"
+attachments:
+  - link: "https://github.com/KI-Vorlesung/Lecture/blob/master/markdown/nn/files/NN3-Logistische_Regression.pdf"
+    name: "NN3-Logistische_Regression.pdf"
 ---
 
 ## Kurze Übersicht
@@ -28,7 +40,7 @@ youtube:
 *   Die **Hypothesenfunktion** ist:
     $$ h(\mathbf{x}) = \sigma (\mathbf{w}^T\mathbf{x}) = \sigma (w_0 + w_1x_1 + w_2x_2 + \ldots + w_nx_n) \tag{1}$$
 
-*   Der **Kreuzentropie Verlust** (engl. Cross-Entropy) für einen Datenpunkt $ \mathbf{x} $: 
+*   Der **Kreuzentropie Verlust** (engl. Cross-Entropy) für einen Datenpunkt $ \mathbf{x} $:
     $$ \mathcal{L}(a, y) =  - y  \log(a) - (1-y)  \log(1-a)\tag{2} $$
     wobei hier $a := \hat{y} $ die Vorhersage ist.
 
