@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Einführung KI on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/</link>
+    <description>Recent content in Einführung KI on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intro: Was ist Künstliche Intelligenz?</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/intro-ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/intro-ai/</guid>
+      <description>Was ist (künstliche) Intelligenz?  Quelle: AvB - RoboCup 2013 - Eindhoven, by RoboCup2013, licensed under CC BY 2.0
+ Was ist (künstliche) Intelligenz? Ist Commander Data intelligent? Woran erkennen Sie das?  Diskussion   Definition Intelligenz  Intelligenz (von lat. intellegere &amp;quot;verstehen&amp;quot;, wörtlich &amp;quot;wählen zwischen ...&amp;quot; von lat. inter &amp;quot;zwischen&amp;quot; und legere &amp;quot;lesen, wählen&amp;quot;) ist in der Psychologie ein Sammelbegriff für die kognitive Leistungsfähigkeit des Menschen. Da einzelne kognitive Fähigkeiten unterschiedlich stark ausgeprägt sein können und keine Einigkeit besteht, wie diese zu bestimmen und zu unterscheiden sind, gibt es keine allgemeingültige Definition der Intelligenz.</description>
+    </item>
+    <item>
+      <title>Problemlösen</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/problems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/problems/</guid>
+      <description>Motivation: Roboter in einer Bibliothek   Aktionen:
+ Right (R) Left (L) Take (T) Drop (D)   Wahrnehmungen:
+ In welchem Raum bin ich? Habe ich das Buch?    Aufgabe: Das Buch aus der Bibliothek holen und in den Kopiererraum bringen.
+Hinweis Agent, Umwelt, Modellierung   Bemerkungen zur Umwelt:
+ Beobachtbarkeit der Umwelt kann variieren: &amp;quot;voll beobachtbar&amp;quot; bis zu &amp;quot;unbeobachtbar&amp;quot; Umwelt kann &amp;quot;deterministisch&amp;quot; oder &amp;quot;stochastisch&amp;quot; sein: Führt eine Aktion in einem Zustand immer zum selben Folgezustand?</description>
+    </item>
+  </channel>
+</rss>

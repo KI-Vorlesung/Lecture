@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NN: Einführung in Neuronale Netze on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/</link>
+    <description>Recent content in NN: Einführung in Neuronale Netze on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NN1 - Das Perzeptron</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn1_perceptron/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn1_perceptron/</guid>
+      <description>Kurze Übersicht Definition &amp;quot;Maschinelles Lernen&amp;quot; Fähigkeit zu lernen, ohne explizit programmiert zu werden. (Arthur Samuel, 1959)
+Arten des Lernens  Überwachtes Lernen (e.g. Klassifizierung, Regression) Unüberwachtes Lernen (e.g. Clustering, Dimensionsreduktion) Bestärkendes Lernen (e.g. Schach spielen)  Formalisierung  Zielfunktion $f$ Merkmalraum (input space) Ausgaberaum (output space) Datensatz $ $ Hypothesenmenge $ $ Lernalgorithmus $ $  Das Perzeptron Ein einfaches Modell für die binäre Klassifizierung
+ Bilde gewichtete Summe (Linearkombination) der Merkmale Vergleiche das Ergebnis mit einem Schwellenwert  Positiv, falls über dem Schwellenwert Negativ, falls unter dem Schwellenwert   Gewichte und Schwellenwert sind unbekannte Parameter des Modells, die es zu lernen gilt &amp;gt; siehe Perzeptron Lernalgorithmus  </description>
+    </item>
+    <item>
+      <title>NN2 - Lineare Regression</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn2_linear_regression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn2_linear_regression/</guid>
+      <description>Kurze Übersicht Formalisierung  Ausgabe $y$ ist reelle Zahl aus einem stetigen Bereich (zum Beispiel Hauspreis) Die Hypothesenfunktion ist eine gewichtete Summe der Merkmale $x_i$ plus eine Konstante $w_0$: $$ h(\mathbf{x}) = \mathbf{w}^T\mathbf{x} = w_0 + w_1x_1 + w_2x_2 + \ldots + w_nx_n $$  Der Verlust (engl. loss) für einen Datenpunkt $ $ ist das Fehlerquadrat: $$ \mathcal{L} = (\hat{y} - y)^2 = (h(\mathbf{x}) - y)^2 $$  Die Kosten (engl.</description>
+    </item>
+    <item>
+      <title>NN3 - Logistische Regression</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn3_logistic_regression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn3_logistic_regression/</guid>
+      <description>Kurze Übersicht Formalisierung   Ausgabe $y$ ist reelle Zahl aus dem stetigen Bereich $(0,1)$
+  Die Hypothesenfunktion ist:
+$$ h(\mathbf{x}) = \sigma (\mathbf{w}^T\mathbf{x}) = \sigma (w_0 + w_1x_1 + w_2x_2 + \ldots + w_nx_n) \tag{1}$$   Der Kreuzentropie Verlust (engl. Cross-Entropy) für einen Datenpunkt $ $:
+$$ \mathcal{L}(a, y) = - y \log(a) - (1-y) \log(1-a)\tag{2} $$ wobei hier \$a := \$ die Vorhersage ist.   Die Kosten als durchschnittlicher Verlust über alle Datenpunkte $ x^{(1)}, , x^{(m)} $:</description>
+    </item>
+    <item>
+      <title>NN4 - Overfitting und Regularisierung</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn4_overfitting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn4_overfitting/</guid>
+      <description>Kurze Übersicht Nichtlineare Modelle  Einführung von neuen Merkmalen in Form von nichtlienaren Kombinationen der ursprünglichen Merkmale Erhöhung der Komplexität des Modells ermöglicht das Erfassen von nichtlinearen Beziehungen Bemerkung: Die Hypothesenfunktion bleibt linear in den Gewichten, es wird weiterhin logistische Regression in einem erweiterten Merkmalraum durchgeführt.  Überanpassung und Regularisierung  Die Überanpassung (engl. Overfitting) ist eines der häufigsten und wichtigsten Probleme in ML und DL &amp;quot;Was im Bereich des maschinellen Lernens Professionelle von Amateuren unterscheidet, ist ihre Fähigkeit mit Überanpassung umzugehen.</description>
+    </item>
+    <item>
+      <title>NN5 - Multilayer Perzeptron</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn5_mlp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn5_mlp/</guid>
+      <description>Kurze Übersicht Multilayer Perzeptron (MLP)  Das Perzeptron kann nur linear separable Daten korrekt klassifizieren. Durch das Zusammenschließen von mehreren Perzeptronen kann man ein mehrschichtiges Perzeptron (engl. Multilayer Perceptron) aufstellen, das komplexere Funktionen modellieren kann. Ein MLP wird oft auch als Feed Forward Neural Network oder als Fully Connected Neural Network bezeichnet. Die &amp;quot;inneren&amp;quot; Schichten eines solchen Netzwerkes sind sogenannte versteckte Schichten (engl. hidden layer). Das sind alle Schichten ausgenommen die Eingangs- und Ausgangsschicht.</description>
+    </item>
+    <item>
+      <title>NN6 - Backpropagation</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn6_backprop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn6_backprop/</guid>
+      <description>Kurze Übersicht Forwärts- und Rückwärtslauf   Im Forwärtslauf (engl. forward pass oder forward propagation) wird ein einzelner Forwärtsschritt von Schicht $[l-1]$ auf Schicht $[l]$ wie folgt berechnet:
+$$ Z^{[l]} = W^{[l]}A^{[l-1]} + b^{[l]} \tag{1} $$ $$A^{[l]} = g(Z^{[l]}) \tag{2} $$ Dabei bezeichnet $g$ die Aktivierungsfunktion (z.B. Sigmoid oder ReLU).   Im Rückwärtslauf (engl. backpropagation) werden in einem einzelnen Rückwärtsschritt von Schicht $[l]$ auf Schicht $[l-1]$ die folgenden Gradienten berechnet:</description>
+    </item>
+    <item>
+      <title>NN7 - Training &amp; Testing</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn7_training_testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn7_training_testing/</guid>
+      <description>Kurze Übersicht Training und Testing   Der tatsächliche Erfolg eines Modells wird nicht durch niedrige Trainingskosten gemessen, sondern durch geringe Kosten auf ungesehenen Daten, d.h. hohe Vorhersagekraft, gute Generalisierung!
+  Die Menge aller gelabelten Daten in Trainingsset und Testset aufteilen, Testset nicht während des Trainings einsetzen!.
+ $E_{in}$ bezeichnet den Fehler auf dem Trainingsset, auch in-sample error. $E_{out}$ bezeichnet den Fehler auf dem gesamten Eingaberaum $X$, auch out-of-sample error.</description>
+    </item>
+    <item>
+      <title>NN8 - Performanzanalyse</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn8_testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn8_testing/</guid>
+      <description>Kurze Übersicht Performanzmetriken für Klassifizierungsprobleme Wahrheitsmatrix (engl. Confusion Matrix)  Gibt eine Übersicht über die Anzahl von richtig und falsch klassifizierten Datenpunkten (bei binärer Klassifizierung)  $TP = $ # True Positives $ = $ Anzahl richtiger 1-Vorhersagen $FP = $ # False Positives $ = $ Anzahl falscher 1-Vorhersagen $FN = $ # False Negatives $ = $ Anzahl falscher 0-Vorhersagen $TN = $ # True Negatives $ = $ Anzahl richtiger 0-Vorhersagen   Bei Klassifizierungsproblemen mit $N$ Klassen hat man eine $N \times N$ Matrix, die in Position $(i,j)$ die Anzahl der Klasse-$j$-Beispiele enthält, die als Klasse-$i$ vorhergesagt wurden.</description>
+    </item>
+  </channel>
+</rss>

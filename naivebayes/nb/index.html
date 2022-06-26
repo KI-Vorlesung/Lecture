@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.96.0" />
+    <meta name="generator" content="Relearn 3.4.1&#43;tip">
+    <meta name="description" content="">
+    <meta name="author" content="cagix">
+    <title>Klassifikation mit Naive Bayes   </title>
+    <link rel="icon" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/images/logo.png?1656244436" type="image/png">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/nucleus.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/fontawesome-all.min.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/featherlight.min.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/perfect-scrollbar.min.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/auto-complete.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/theme.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/theme-relearn-light.css?1656244436" rel="stylesheet" id="variant-style">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/variant.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/print.css?1656244436" rel="stylesheet" media="print">
+    <style>
+      :not(pre) > code.copy-to-clipboard-code + span.copy-to-clipboard-button {
+        display: none;
+      }
+      :not(pre) > code.copy-to-clipboard-code {
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        border-right-width: 1px;
+      }
+    </style>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/variant.js?1656244436"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/index.json";
+      var root_url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/www.fh-bielefeld.de\/elearning\/data\/FH-Bielefeld\/lm_data\/lm_1166002/';
+      variants.init( [ 'relearn-light', 'relearn-dark', 'green' ] );
+    </script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/jquery.min.js?1656244436"></script><style type="text/css">
+
+ 
+.center {
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+.alert {
+    color: #ff3333;
+}
+.bsp {
+    padding: 0.05cm;
+    border-width: 0.05cm;
+    border-style: solid;
+    border-color: #ddd;
+    background-color: #ddd;
+    border-radius: 25px;
+    float: right;
+}
+.cbox {
+    padding: 0.2cm;
+    border-width: 0.1cm;
+    border-style: solid;
+    border-color: #4070a0;
+    background-color: #f2f2f2;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    overflow: auto;
+}
+.blueArrow {
+    color: #4070a0;
+    font-family: "Courier New", "Courier", monospace;
+    font-weight: bold;
+}
+.origin {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+.showme {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+
+
+ 
+.tldr {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.recap {
+    
+    
+   margin: 4px 0px 26px 0px;
+}
+.bib {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.outcomes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.quizzes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.challenges {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.assignments {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+h1.tldr, h1.recap, h1.bib, h1.outcomes, h1.quizzes, h1.challenges, h1.assignments {
+    padding: 0px;
+}
+
+
+ 
+.noJsAlert {
+    padding: 20px;
+    background-color: #f44336;  
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+ 
+.embed-video-player {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+    overflow: hidden;
+}
+.youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border:0;
+}
+
+
+ 
+#header-wrapper {
+    padding:0.6rem;
+}
+
+
+ 
+#shortcuts {
+    padding-top: 2.0rem;
+}
+
+
+ 
+#chapter p {
+    text-align: left;
+}
+
+
+ 
+figcaption h4 {
+    margin-top:-2.5rem;
+}
+.border1 {
+    border:1px solid black;
+}
+
+ 
+td ul, td ol {
+    margin: 0 0 1rem 0.5rem;
+    padding: 0 0 0 0.5rem;
+}
+
+ 
+h1 { font-size:2.8rem !important;}
+h2 { font-size:2.2rem; margin:1.2rem 0}
+h3 { font-size:1.9rem; text-align:left !important; font-weight:400 !important;}
+h4 { font-size:1.6rem}
+h5 { font-size:1.3rem}
+h6 { font-size:1rem}
+
+h2 {
+    width:100% !important;
+    border-bottom:1px solid #5e5e5e !important;
+    padding-bottom: 2px;
+}
+.tldr h2, .recap h2, .bib h2, .outcomes h2, .quizzes h2, .challenges h2, .assignments h2 {
+    margin:0.5rem 0
+}
+
+.btn-crossreference, .btn-crossreference:hover {
+    cursor: initial !important;
+    color: #333 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;
+}
+
+</style>
+
+  </head>
+  <body class="mobile-support" data-url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/KI-Vorlesung/Lecture/edit/master/markdown/naivebayes/nb.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/"><span itemprop="name">KI W21</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/"><span itemprop="name">Naive Bayes</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/" aria-disabled="true"><span itemprop="name">Klassifikation mit Naive Bayes</span></a></li>
+            </ol>
+          </div>
+          <div class="default-animation progress">
+            <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#medizinische-diagnostik-mit-nb">Medizinische Diagnostik mit NB</a></li>
+    <li><a href="#textklassifikation-mit-nb">Textklassifikation mit NB</a></li>
+    <li><a href="#naive-bayes">Naive Bayes</a></li>
+    <li><a href="#bayessches-lernen">Bayes'sches Lernen</a></li>
+    <li><a href="#beispiel-klassifikation-mit-nb">Beispiel Klassifikation mit NB</a></li>
+    <li><a href="#textklassifikation-mit-nb-1">Textklassifikation mit NB</a></li>
+    <li><a href="#naivität-im-naive-bayes">Naivität im Naive Bayes</a></li>
+    <li><a href="#laplace-schätzer">Laplace-Schätzer</a></li>
+    <li><a href="#probleme-mit-floating-point-underflow">Probleme mit Floating Point Underflow</a></li>
+    <li><a href="#maximum-likelihood">Maximum Likelihood</a></li>
+    <li><a href="#ausblick-kontinuierliche-attribute">Ausblick: Kontinuierliche Attribute</a></li>
+    <li><a href="#hinweis-zum-sprachgebrauch">Hinweis zum Sprachgebrauch</a></li>
+    <li><a href="#wrap-up">Wrap-Up</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+
+
+
+    
+
+
+
+
+
+
+<div class="tldr">
+    <h2>TL;DR</h2>
+
+    
+
+    
+        <p>Mit Hilfe der (verallgemeinerten) Bayes-Regel kann man Klassifikation durchführen.
+Dazu werden beim &quot;Training&quot; die bedingten Wahrscheinlichkeiten aus den Trainingsdaten
+geschätzt. Die Anwendung (Klassifikation) erfolgt dann durch die Nutzung der beim
+&quot;Training&quot; berechneten bedingten Wahrscheinlichkeiten:</p>
+<div>$$
+h_{MAP} = \operatorname{argmax}_{h \in H} P(h|D_1,  \ldots, D_n) =
+\operatorname{argmax}_{h \in H} P(h) \prod_i P(D_i|h)
+$$</div>
+<p>Für jede Hypothese <span>$h$</span>, d.h. für jede Klasse, wird der Posterior <span>$P(h|D_1, \ldots, D_n)$</span>
+ausgerechnet. Die Klasse, deren Wert dabei am höchsten ist, &quot;gewinnt&quot;, d.h. die Klasse
+mit dem größten Posterior wird ausgegeben. (Deshalb wird das Verfahren oft auch &quot;MAP&quot;
+-- <em>Maximum a Posteriori</em> -- genannt.)</p>
+<p>Bei der Berechnung wird angenommen, dass die betrachteten Merkmale (bedingt) unabhängig
+sind (dies geht in die obige Formel ein). Diese Annahme trifft aber oft nicht zu, deshalb
+auch der Name &quot;<em>Naive</em> Bayes Klassifikation&quot;. Man berechnet in diesem Fall falsche Werte.
+Dennoch zeigt der Algorithmus in der Praxis sehr gute Ergebnisse.</p>
+<p>Durch den Einsatz der bedingten Wahrscheinlichkeiten in der Produktformel ergeben sich
+einige Schwierigkeiten:</p>
+<ol>
+<li>Wenn beim &quot;Training&quot; Ausprägungen fehlen, ist die bedingte Wahrscheinlichkeit Null.
+Dadurch wird das gesamte Produkt Null. Zur Abhilfe kann man den <strong>Laplace-Schätzer</strong>
+nutzen, der (gesteuert über einen Parameter) gewissermaßen virtuelle Trainingsbeispiele
+beisteuert.</li>
+<li>Durch das Produkt vieler kleiner Werte kann es schnell zu <em>Floating Point</em>-Underflows
+kommen. Hier kann man einen Trick nutzen: Man berechnet den Logarithmus der Produktformel.
+Dadurch ändern sich zwar die absoluten Werte, die Reihenfolge der Hypothesen bleibt aber
+erhalten. Da wir nur nach der Hypothese suchen, die einen höheren Wert als die anderen
+hat, und nicht den absoluten Wert an sich benötigen, kann man so vorgehen. Durch den
+Logarithmus wird aus dem Produkt eine Summe, wo die kleinen Werte der bedingten
+Wahrscheinlichkeiten nicht so starke Auswirkungen haben wie im Produkt.</li>
+</ol>
+<p>Oft nimmt man zusätzlich an, dass für alle Hypothesen (Klassen) <span>$h$</span> der Prior <span>$P(h)$</span> gleich
+ist. Dann kann man diesen Faktor ebenfalls aus der Berechnung entfernen. Dieses Verfahren
+nennt man auch &quot;<strong>Maximum Likelihood</strong>&quot;.</p>
+<p>Der NB-Klassifikator wird gern für die Textklassifikation eingesetzt. Hier muss man einem
+Text ein Label zuordnen. In einer Vorverarbeitung wird zunächst eine Menge der relevanten
+Wörter über alle Trainingstexte gebildet (<em>Bag-of-Words</em>). Der Bag-of-Words entspricht einem
+Merkmalsvektor, wobei die Merkmale die einzelnen Wörter sind. Dann kann jeder Text der
+Trainingsmenge über so einen Merkmalsvektor dargestellt werden: Entweder man gibt pro Merkmal
+an, ob es da (1) oder nicht da (0) ist oder man zählt die Häufigkeit des Auftretens. Dann kann
+man mit dem NB-Klassifikator die bedingten Wahrscheinlichkeiten schätzen und einen neuen Text
+klassifizieren.</p>
+
+    
+
+    
+        <h3>Videos (YouTube)</h3>
+        
+
+<ul>
+
+    
+    
+
+    
+
+    
+    
+        <li><a href="https://youtu.be/qfX4zp1i-Co" target="_blank" rel="nofollow noopener noreferrer">VL Naive Bayes Klassifikation</a></li>
+    
+
+</ul>
+
+    
+
+    
+        <h3>Videos (FH-Medienportal)</h3>
+        
+
+<ul>
+
+    
+    
+
+    
+    
+    
+
+    
+        <li><a href="https://www.fh-bielefeld.de/medienportal/m/d84605cc9bccc5d1d8d589c2968726d32539aa629bff06e28096a834730bfd8c1bef1604fd09ee1aab906d30272c5fd1f31b11418fa2bdb2e2710a23dd382d1c" target="_blank" rel="nofollow noopener noreferrer">VL Naive Bayes Klassifikation</a></li>
+    
+
+</ul>
+
+    
+
+    
+
+</div>
+
+
+    
+
+
+
+<div class="outcomes">
+    <h2>Lernziele</h2>
+
+    
+
+    
+    
+    <ul>
+    
+        
+        <li>(K2) Annahme von Unabhängigkeit =&gt; 'Naive' Bayes Klassifikation</li>
+        
+        
+    
+        
+        <li>(K2) Naivität der Annahme, dennoch sehr gute Erfolge in Praxis</li>
+        
+        
+    
+        
+        <li>(K2) Probleme mit niedrigen Wahrscheinlichkeiten</li>
+        
+        
+    
+        
+        
+        <li>(K3) Schätzen der bedingten Wahrscheinlichkeiten aus den Trainingsdaten</li>
+        
+    
+        
+        
+        <li>(K3) Klassifikation mit Naive Bayes durch Nutzung der geschätzten Wahrscheinlichkeiten</li>
+        
+    
+    </ul>
+    
+
+</div>
+
+
+    <h2 id="medizinische-diagnostik-mit-nb">Medizinische Diagnostik mit NB</h2>
+<ul>
+<li>Bei Arthrose wird in 80 Prozent der Fälle ein steifes Gelenk beobachtet: <span>$P(S|A) = 0.8$</span></li>
+<li>Eine von 10.000 Personen hat Arthrose: <span>$P(A) = 0.0001$</span></li>
+<li>Eine von 10 Personen hat ein steifes Gelenk: <span>$P(S) = 0.1$</span></li>
+</ul>
+<p>=&gt; Ich habe ein steifes Gelenk. Habe ich Arthrose?</p>
+<h2 id="textklassifikation-mit-nb">Textklassifikation mit NB</h2>
+<ul>
+<li>
+<p>Mails, manuell markiert:</p>
+<ul>
+<li>D1: (&quot;Sieben Zwerge fraßen sieben Ziegen&quot;, OK)</li>
+<li>D2: (&quot;Sieben Ziegen traten sieben Wölfe&quot;, SPAM)</li>
+<li>D3: (&quot;Sieben Wölfe fraßen sieben Böcke&quot;, OK)</li>
+<li>D4: (&quot;Sieben Böcke traten sieben Zwerge&quot;, SPAM)</li>
+</ul>
+</li>
+<li>
+<p>Neue Mails:</p>
+<ul>
+<li>T1: (&quot;Sieben Zwerge fraßen sieben Wölfe&quot;)</li>
+<li>T2: (&quot;Sieben Zwerge traten sieben Ziegen&quot;)</li>
+</ul>
+</li>
+</ul>
+<p>Lernen Sie mit Hilfe der Trainingsmenge einen Naive-Bayes-Klassifikator und
+wenden Sie diesen auf die beiden Test-Dokumente an.</p>
+<h2 id="naive-bayes">Naive Bayes</h2>
+<ul>
+<li>
+<p>Verallgemeinerte Bayes Regel</p>
+<div>$$
+P(H|D_1, \ldots, D_n) = \frac{P(D_1, \ldots, D_n | H)P(H)}{P(D_1, \ldots, D_n)}
+$$</div>
+</li>
+<li>
+<p>Annahme: <span>$D_i$</span> sind bedingt unabhängig</p>
+<div>$$
+P(D_1, \ldots, D_n | H) = P(D_1 | H) \cdot \ldots \cdot P(D_n | H) = \prod_i P(D_i | H)
+$$</div>
+</li>
+<li>
+<p>Beobachtung: <span>$P(D_1, \ldots, D_n)$</span> für alle Hypothesen <span>$h \in H$</span> gleich</p>
+</li>
+<li>
+<p><strong>Naive Bayes Klassifikator</strong> bzw. <strong>MAP</strong> (&quot;Maximum a Posteriori&quot;)</p>
+<div>$$
+h_{MAP} = \operatorname{argmax}_{h \in H} P(h | D_1, \ldots, D_n)
+= \operatorname{argmax}_{h \in H} P(h) \prod_i P(D_i | h)
+$$</div>
+<p>Naive Bayes: Wähle die plausibelste Hypothese, die von den Daten
+unterstützt wird.</p>
+</li>
+</ul>
+<h2 id="bayessches-lernen">Bayes'sches Lernen</h2>
+<div>$$
+h_{MAP} = \operatorname{argmax}_{h \in H} P(h | D_1, \ldots, D_n)
+= \operatorname{argmax}_{h \in H} P(h) \prod_i P(D_i | h)
+$$</div>
+<p><strong>Training</strong>: Bestimme die Wahrscheinlichkeiten aus Trainingsdaten <span>$\mathbf{S}$</span></p>
+<ul>
+<li>Für jede Klasse <span>$h$</span>:
+<ul>
+<li>Schätze <span>$P(h) = \dfrac{|S(h)|}{|S|}$</span></li>
+<li>Für jedes Attribut <span>$D_i$</span> und jede Ausprägung <span>$x \in D_i$</span>:
+Schätze <span>$P(D_i=x | h) = \dfrac{|S_{D_i}(x) \cap S(h)|}{|S(h)|}$</span></li>
+</ul>
+</li>
+</ul>
+<p><strong>Klassifikation</strong>: Wähle wahrscheinlichste Klasse <span>$h_{MAP}$</span> für Vektor <span>$\mathbf{x}$</span></p>
+<ul>
+<li><span>$h_{MAP} = \operatorname{argmax}<em>{h \in H} P(h) \prod</em>{x \in \mathbf{x}} P(x | h)$</span></li>
+</ul>
+<h2 id="beispiel-klassifikation-mit-nb">Beispiel Klassifikation mit NB</h2>
+<table>
+<thead>
+<tr>
+<th>Nase läuft</th>
+<th>Husten</th>
+<th>Gerötete Haut</th>
+<th>Fieber</th>
+<th>Klasse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>krank</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>krank</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>krank</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>gesund</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>gesund</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Eingabe: Person mit Husten und Fieber</li>
+</ul>
+<p>Gesucht: <span>$P(\text{krank})$</span>, <span>$P(\text{gesund})$</span>, <span>$P(\text{Nase=0}|\text{krank})$</span>,
+<span>$P(\text{Nase=0}|\text{gesund})$</span>, ...</p>
+<p>Wähle Klasse</p>
+<div>$$
+\begin{array}{rl}
+h_{MAP} = \operatorname{argmax}_{h \in \lbrace \text{gesund, krank} \rbrace} & P(h) \cdot P(\text{Nase=0}|h) \cdot P(\text{Husten=1}|h) \\
+    & \cdot P(\text{Haut=0}|h) \cdot P(\text{Fieber=1}|h)
+\end{array}
+$$</div>
+<p><strong>Ergebnis</strong>: (nur die für den zu klassifizierenden Beispiel-Vektor nötigen
+Werte, die restlichen müssten aber auch beim &quot;Training&quot; berechnet werden!)</p>
+<pre><code>P(gesund) = 2/5 = 0.4
+P(krank)  = 3/5 = 0.6
+
+P(Nase=0 | gesund) = 1/2 = 0.5
+P(Nase=0 | krank)  = 1/3 = 0.333
+
+P(Husten=1 | gesund) = 0/2 = 0
+P(Husten=1 | krank)  = 2/3 = 0.667
+
+P(Haut=0 | gesund) = 2/2 = 1
+P(Haut=0 | krank)  = 1/3 = 0.333
+
+P(Fieber=1 | gesund) = 0/2 = 0
+P(Fieber=1 | krank)  = 1/3 = 0.333
+
+h = gesund: P(gesund) * P(Nase=0 | gesund) * P(Husten=1 | gesund) * P(Haut=0 | gesund) * P(Fieber=1 | gesund) = 0.4*0.5*0*1*0              = 0
+h = krank:  P(krank)  * P(Nase=0 | krank)  * P(Husten=1 | krank)  * P(Haut=0 | krank)  * P(Fieber=1 | krank)  = 0.6*0.333*0.667*0.33*0.333 = 0.015
+</code></pre>
+<p>=&gt; Klasse &quot;krank&quot; gewinnt ...</p>
+<div style="text-align: right;">
+<span class="btn btn-default btn-crossreference">
+Tafelbeispiel
+</span>
+</div>
+<h2 id="textklassifikation-mit-nb-1">Textklassifikation mit NB</h2>
+<ul>
+<li>
+<p>Texte als Trainingsmenge:</p>
+<ul>
+<li>Text zerlegen in Terme (Wörter, sonstige relevante Token)</li>
+<li>ggf. Entfernen von Stoppwörtern (beispielsweise Artikel u.ä.)</li>
+<li>ggf. Stemming und Lemmatisierung für restliche Terme</li>
+<li>ggf. weitere Vorverarbeitungsschritte (Groß-Klein-Schreibung, ...)</li>
+<li>Terme zusammenfassen als Menge: <em>&quot;Bag of Words&quot;</em> (mit Häufigkeit)</li>
+</ul>
+</li>
+<li>
+<p>Naive Bayes &quot;trainieren&quot;:</p>
+<ul>
+<li>
+<p>A-priori-Wahrscheinlichkeit der Klassen:
+<span>$P(c) = \dfrac{N_c}{N} = \dfrac{\text{Anzahl Dokumente in Klasse c}}{\text{Anzahl Dokumente}}$</span></p>
+</li>
+<li>
+<p>Likelihood der Daten (Terme):</p>
+<ul>
+<li>
+<p><span>$P(t|c) = \dfrac{\operatorname{count}(t,c)}{\sum_{v \in V} \operatorname{count}(v,c)}$</span>
+mit <span>$\operatorname{count}(t,c)$</span> Anzahl der Vorkommen von Term <span>$t$</span> in allen Dokumenten
+der Klasse <span>$c$</span> und <span>$V$</span> die Vereinigung aller Terme aller Dokumente
+(als Menge)</p>
+</li>
+<li>
+<p>Variante mit Laplace-Glättung (s.u.):
+<span>$P(t|c) = \dfrac{\operatorname{count}(t,c) + 1}{\sum_{v \in V} \operatorname{count}(v,c) + |V|}$</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="naivität-im-naive-bayes">Naivität im Naive Bayes</h2>
+<ul>
+<li>
+<p>Unabhängigkeit der Attribute oft nicht gegeben</p>
+<p>=&gt; <span>$P(D_1, \ldots, D_n | H) \ne \prod_i P(D_i | H)$</span></p>
+</li>
+<li>
+<p>A-posteriori-Wahrscheinlichkeiten oft unrealistisch nah an 1 oder 0</p>
+</li>
+<li>
+<p>Praxis: Dennoch häufig sehr gute Ergebnisse</p>
+<p>Wichtig: Solange die <strong>Maximierung</strong> über alle Hypothesen die selben Ergebnisse
+liefert, müssen die konkreten Schätzungen/Werte nicht exakt stimmen ...</p>
+</li>
+</ul>
+<p>Wenn Attribute nicht (bedingt) unabhängig sind, kann sich der NB verschätzen,
+d.h. es kommt dann u.U. zu einer höheren Fehlerrate, da bestimmte Eigenschaften
+in der Trainingsmenge zu hoch gewichtet werden.</p>
+<h2 id="laplace-schätzer">Laplace-Schätzer</h2>
+<ul>
+<li>
+<p>Problem: Attribut-Ausprägung für bestimmte Klasse nicht in Trainingsmenge:</p>
+<ul>
+<li>=&gt; Bedingte Wahrscheinlichkeit ist 0</li>
+<li>=&gt; Produkt gleich 0</li>
+</ul>
+</li>
+<li>
+<p>Lösung: &quot;Laplace-Schätzer&quot; (auch &quot;Laplace-Glättung&quot;)</p>
+<p>Statt <span>$P(D_i=x | h) = \dfrac{|S_{D_i}(x) \cap S(h)|}{|S(h)|}$</span></p>
+<p>nutze <span>$P(D_i=x|h) = \dfrac{|S_{D_i}(x) \cap S(h)| + m \cdot p_i}{|S(h)| + m}$</span></p>
+<ul>
+<li>
+<p>mit <span>$m$</span>: frei wählbarer Faktor, und</p>
+</li>
+<li>
+<p><span>$p_i$</span>: A-priori-Wahrscheinlichkeit für <span>$P(D_i=x|h)$</span></p>
+<p>Hintergrundwissen oder einfach <em>uniforme Verteilung der Attributwerte</em>:
+<span>$p_i = 1/|D_i|$</span> (Wahrscheinlichkeit für eine Attributausprägung
+ist 1/(Anzahl der Ausprägungen des Attributs))</p>
+</li>
+</ul>
+<p>=&gt; &quot;virtuelle&quot; Trainingsbeispiele (<span>$m$</span> ist die Zahl der virtuellen Trainingsbeispiele)</p>
+</li>
+</ul>
+<h2 id="probleme-mit-floating-point-underflow">Probleme mit Floating Point Underflow</h2>
+<ul>
+<li>
+<p>MAP berechnet Produkt mit vielen Termen</p>
+</li>
+<li>
+<p>Problem: Bei kleinen Zahlen kann <strong>Floating Point Underflow</strong> auftreten!</p>
+</li>
+<li>
+<p>Lösung: Logarithmus maximieren (Produkt geht in Summe über)</p>
+<p>Erinnerung: <span>$\log(x \cdot y) = \log(x) + \log(y)$</span> und Logarithmus streng monoton</p>
+<div>$$
+\begin{array}{rcl}
+h_{MAP} &=& \operatorname{argmax}_{h \in H} P(h|D_1, \ldots, D_n) \\[5pt]
+        &=& \operatorname{argmax}_{h \in H} P(h) \prod_i P(D_i | h) \\[5pt]
+        &=& \operatorname{argmax}_{h \in H} [\log(P(h)) + \sum_i \log(P(D_i | h))]
+\end{array}
+$$</div>
+</li>
+</ul>
+<h2 id="maximum-likelihood">Maximum Likelihood</h2>
+<ul>
+<li>
+<p><strong>Maximum a Posteriori</strong></p>
+<div>$$
+h_{MAP} = \operatorname{argmax}_{h \in H} P(h | D_1, \ldots, D_n)
+= \operatorname{argmax}_{h \in H} P(h) \prod_i P(D_i | h)
+$$</div>
+</li>
+<li>
+<p>Annahme: Klassen uniform verteilt =&gt; <span>$P(h_i) = P(h_j)$</span></p>
+<p><strong>Maximum Likelihood</strong></p>
+<div>$$
+h_{ML} = \operatorname{argmax}_{h \in H} \prod_i P(D_i | h)
+$$</div>
+<p>=&gt; Maximiere die Likelihood der Daten</p>
+</li>
+</ul>
+<h2 id="ausblick-kontinuierliche-attribute">Ausblick: Kontinuierliche Attribute</h2>
+<p>Bisher sind wir von diskreten Attributen ausgegangen. Bei kontinuierlichen
+Attributen hat man zwei Möglichkeiten:</p>
+<ul>
+<li>Diskretisierung der Attribute: Aufteilung in Intervalle und Bezeichnung
+der Intervalle mit einem Namen</li>
+<li>Einsatz einer Verteilungsannahme und deren Dichtefunktion, beispielsweise
+Annahme von <strong>normalverteilten</strong> Daten mit der Dichtefunktion
+<div>$$
+f(x) = \frac{1}{\sqrt{2 \pi \sigma}} e^{- \frac{(x - \mu)^2}{2 \sigma^2}}
+$$</div>
+wobei <span>$\mu$</span> der Mittelwert und <span>$\sigma^2$</span> die Varianz der Daten sind.
+</li>
+</ul>
+<h2 id="hinweis-zum-sprachgebrauch">Hinweis zum Sprachgebrauch</h2>
+<p>In Abhängigkeit von der Verteilung der <span>$P(D_i | h)$</span> spricht man von</p>
+<ul>
+<li>&quot;multinominalem&quot; NB: Attribute umfassen mehrere Kategorien (verschiedene
+Ausprägungen, wie im &quot;Wahlkampf&quot;-Beispiel (Aufgabe A5.4 in
+<a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet05/">&ldquo;Blatt 05&rdquo;</a>: Attribut &quot;Bildung&quot; hat
+die Ausprägungen &quot;Abitur&quot;, &quot;Bachelor&quot; und &quot;Master&quot;)</li>
+<li>Bernoulli NB: Attribute sind binär (Ausprägung 0 oder 1), typischerweise
+bei der Textklassifikation</li>
+<li>Gauss'sches NB: Annahme einer Normalverteilung der Attribut-Ausprägungen</li>
+</ul>
+<h2 id="wrap-up">Wrap-Up</h2>
+<ul>
+<li>Klassifikation mit Naive Bayes
+<ul>
+<li>Annahme von Unabhängigkeit =&gt; &quot;Naive&quot; Bayes Klassifikation</li>
+<li>Schätzen der bedingten Wahrscheinlichkeiten aus den Trainingsdaten</li>
+<li>Klassifikation durch Nutzung der geschätzten Wahrscheinlichkeiten</li>
+<li>Hinweis auf Naivität der Annahme, dennoch sehr gute Erfolge in Praxis</li>
+<li>Hinweis auf Probleme mit niedrigen Wahrscheinlichkeiten</li>
+</ul>
+</li>
+</ul>
+
+    
+
+
+<div class="quizzes">
+    <h2>Quizzes</h2>
+
+    <ul>
+    
+        
+        
+        
+        <li>
+            <a href="https://kahoot.it/challenge/04333248?challenge-id=8471c25d-77c6-4c83-b473-6edcacfcb770_1636955922820" class="icon reading" target="_blank" rel="nofollow noopener noreferrer"><strong>Selbsttest Naive Bayes Klassifikation (Kahoot)</strong></a>
+        </li>
+        
+    
+    </ul>
+
+</div>
+
+
+    
+
+
+
+
+    
+
+
+
+<div class="bib">
+    <h2>Quellen</h2>
+
+    <ul>
+    
+        
+        
+
+        
+            
+            
+            
+            
+            
+
+            
+            
+                
+                    
+                
+            
+            
+            
+            
+            
+            
+
+            <li id="id_Ertel2017">
+            
+                [Ertel2017] <strong>Introduction to artificial intelligence</strong>
+            
+            
+                <br>Ertel, W., Springer, 2017.
+                
+                    ISBN <a href="https://www.digibib.net/openurl/Bi10?isbn=978-3-319-58487-4" target="_blank" rel="nofollow noopener noreferrer">978-3-319-58487-4</a>.
+                
+                
+                    DOI <a href="https://doi.org/10.1007/978-3-319-58487-4" target="_blank" rel="nofollow noopener noreferrer">10.1007/978-3-319-58487-4</a>.
+                
+            
+            
+                <br><em>Abschnitt 8.7</em>
+            
+            </li>
+        
+
+    
+        
+        
+
+        
+            
+            
+            
+            
+            
+
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+            
+            
+            
+            
+            
+
+            <li id="id_Russell2020">
+            
+                [Russell2020] <a href="http://aima.cs.berkeley.edu" class="icon reading" target="_blank" rel="nofollow noopener noreferrer"><strong>Artificial intelligence: A modern approach</strong></a>
+            
+            
+                <br>Russell, S. und Norvig, P., Pearson, 2020.
+                
+                    ISBN <a href="https://www.digibib.net/openurl/Bi10?isbn=978-0134610993" target="_blank" rel="nofollow noopener noreferrer">978-0134610993</a>.
+                
+                
+            
+            
+                <br><em>Kapitel 12</em>
+            
+            </li>
+        
+
+    
+    </ul>
+
+</div>
+
+
+
+
+
+
+        </div>
+      </main><p><div style="color: darkgray; font-size: smaller;">
+<p style="margin-left: 1rem;">
+    <!-- https://creativecommons.org/choose/ -->
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;margin:0;display:inline;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> Unless otherwise noted, <a href="https://github.com/KI-Vorlesung/Lecture">this work</a> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/cyildiz" property="cc:attributionName" rel="cc:attributionURL">Canan Yıldız</a>, <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/cagix" property="cc:attributionName" rel="cc:attributionURL">Carsten Gips</a>, and <a href="https://github.com/KI-Vorlesung/Lecture/graphs/contributors">contributors</a> is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+<br />
+    Icons by <a href="https://fontawesome.com/">Font Awesome</a>.
+    Built with <a href="https://github.com/jgm/pandoc">Pandoc</a> using <a href="https://github.com/cagix/pandoc-lecture">Pandoc-Lecture</a> and <a href="https://github.com/gohugoio/hugo">Hugo</a> using the <a href="https://github.com/McShelby/hugo-theme-relearn">Hugo Relearn Theme</a>.
+</p>
+</div>
+<div style="color: darkgray; font-size: smaller;">
+</p>
+
+    </div>
+    <aside id="sidebar" class="default-animation showVisitedLinks">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
+<a id="logo" href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002'>
+    <img style="max-width:35%" alt="icon" src='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/images/logo.png'>
+</a>
+
+        </div>
+      </div>
+      <div id="content-wrapper" class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/intro/" title="Einführung KI" class="dd-item"><input type="checkbox" id="section-925e5bfbd01266c727d74ae1db5ab0c6" class="toggle"/><label for="section-925e5bfbd01266c727d74ae1db5ab0c6" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/">Einführung KI<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/intro/intro-ai/" title="Intro: Was ist Künstliche Intelligenz?" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/intro-ai/">Einführung KI<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/intro/problems/" title="Problemlösen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/problems/">Problemlösen<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/" title="Suche" class="dd-item"><input type="checkbox" id="section-08cfb6301b533c954681b7845aa7e62a" class="toggle"/><label for="section-08cfb6301b533c954681b7845aa7e62a" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/">Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/uninformed/" title="Uninformierte Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-81ce67a4c4f848b49be6e8b0a77d0660" class="toggle" checked/><label for="section-81ce67a4c4f848b49be6e8b0a77d0660" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/">Uninformierte Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/uninformed/dfs/" title="Suche mit Tiefensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/dfs/">Tiefensuche<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/uninformed/bfs/" title="Suche mit Breitensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/bfs/">Breitensuche<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/informed/" title="Informierte Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-e57a324c0a87423ed05b8615c3fc14c6" class="toggle" checked/><label for="section-e57a324c0a87423ed05b8615c3fc14c6" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/">Informierte Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/informed/branchandbound/" title="Suche mit Branch-and-Bound" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/branchandbound/">Branch-and-Bound<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/informed/bestfirst/" title="Suche mit Best First" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/bestfirst/">Best First<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/informed/astar/" title="Suche mit A*" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/astar/">A*<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/local/" title="Lokale Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-3df58c316d8cceefc4f029351d45366f" class="toggle" checked/><label for="section-3df58c316d8cceefc4f029351d45366f" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/">Lokale Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/local/gradient/" title="Lokale Suche: Gradientensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/gradient/">Gradientensuche<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/local/annealing/" title="Lokale Suche: Simulated Annealing" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/">Simulated Annealing<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li>
+          <li data-nav-id="/ea/" title="Genetische Algorithmen" class="dd-item"><input type="checkbox" id="section-4427743bb3613ebd9fb288dea49d1f12" class="toggle"/><label for="section-4427743bb3613ebd9fb288dea49d1f12" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/">Genetische Algorithmen<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/ea/intro/" title="Einführung Evolutionäre Algorithmen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/intro/">Intro EA/GA<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/ea/ga/" title="Modellierung mit Genetischen Algorithmen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/ga/">Genetische Algorithmen<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/games/" title="Spiele" class="dd-item"><input type="checkbox" id="section-dcab5a097c2e0bc19131dd59a2fac20e" class="toggle"/><label for="section-dcab5a097c2e0bc19131dd59a2fac20e" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/">Spiele<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/games/intro/" title="Einführung Optimale Spiele" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/intro/">Optimale Spiele<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/minimax/" title="Minimax" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/minimax/">Minimax<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/heuristics/" title="Heuristiken" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/heuristics/">Heuristiken<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/alphabeta/" title="Alpha-Beta-Pruning" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/alphabeta/">Alpha-Beta-Pruning<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/csp/" title="Constraintsolving" class="dd-item"><input type="checkbox" id="section-af49da79e06eb6041df4c439c33a1423" class="toggle"/><label for="section-af49da79e06eb6041df4c439c33a1423" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/">CSP<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/csp/intro/" title="Einführung Constraints" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/intro/">Intro<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/backtrackingsearch/" title="Lösen von diskreten CSP" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/backtrackingsearch/">Lösen von diskreten CSP<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/heuristics/" title="Heuristiken" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/heuristics/">Heuristiken<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/ac3/" title="Kantenkonsistenz und AC-3" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/ac3/">AC-3<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/dtl/" title="Entscheidungsbäume" class="dd-item"><input type="checkbox" id="section-4574116219561e15eeac8b4524c3245f" class="toggle"/><label for="section-4574116219561e15eeac8b4524c3245f" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/">Entscheidungsbäume<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/dtl/mlbasics/" title="Machine Learning 101" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/mlbasics/">Machine Learning 101<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/cal2/" title="CAL2" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal2/">CAL2<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/pruning/" title="Pruning" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/pruning/">Pruning<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/cal3/" title="CAL3" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal3/">CAL3<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/entropy/" title="Entropie" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/entropy/">Entropie<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/id3/" title="ID3 und C4.5" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/id3/">ID3 und C4.5<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/naivebayes/" title="Naive Bayes" class="dd-item parent"><input type="checkbox" id="section-2de9e17830839ea2a34b596e2636549b" class="toggle" checked/><label for="section-2de9e17830839ea2a34b596e2636549b" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/">Naive Bayes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/naivebayes/probability/" title="Wiederholung Wahrscheinlichkeitstheorie" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/probability/">Wahrscheinlichkeiten<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/naivebayes/nb/" title="Klassifikation mit Naive Bayes" class="dd-item active"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/">Naive Bayes<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/nn/" title="NN: Einführung in Neuronale Netze" class="dd-item"><input type="checkbox" id="section-59dd9ac0a3ddcf6aaf56356bae885f3c" class="toggle"/><label for="section-59dd9ac0a3ddcf6aaf56356bae885f3c" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/">Neuronale Netze<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/nn/nn1_perceptron/" title="NN1 - Das Perzeptron" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn1_perceptron/">NN1 - Perzeptron<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn2_linear_regression/" title="NN2 - Lineare Regression" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn2_linear_regression/">NN2 - Lineare Regression<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn3_logistic_regression/" title="NN3 - Logistische Regression" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn3_logistic_regression/">NN3 - Logistische Regression<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn4_overfitting/" title="NN4 - Overfitting und Regularisierung" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn4_overfitting/">NN4 - Overfitting<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn5_mlp/" title="NN5 - Multilayer Perzeptron" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn5_mlp/">NN5 - MLP<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn6_backprop/" title="NN6 - Backpropagation" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn6_backprop/">NN6 - Backpropagation<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn7_training_testing/" title="NN7 - Training &amp; Testing" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn7_training_testing/">NN7 - Training &amp; Testing<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn8_testing/" title="NN8 - Performanzanalyse" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn8_testing/">NN8 - Performanzanalyse<i class="fas fa-check read-icon"></i></a></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/schedule"><i class='fas fa-bookmark'></i> Fahrplan</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments"><i class='fas fa-bookmark'></i> Praktikum</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/grading"><i class='fas fa-bookmark'></i> Note/Credits</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/syllabus"><i class='fas fa-bookmark'></i> Syllabus</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/resources"><i class='fas fa-bookmark'></i> Ressourcen</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/exam"><i class='fas fa-bookmark'></i> Prüfungsvorbereitung</a></li>
+          </ul>
+        </div>
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVariantSwitch showVisitedLinks">
+          <ul>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch showVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="relearn-dark" value="relearn-dark">Relearn Dark</option>
+                    <option id="green" value="green">Green</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+          </ul>
+        </div>
+        <div id="footer" class="footerFooter showFooter"><p style="margin-left: 1rem;">
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/imprint'>Impressum</a>,
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/privacy'>Datenschutz</a>,
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/credits'>Credits</a>
+</p>
+
+        </div>
+      </div>
+    </aside>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/clipboard.min.js?1656244436"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/perfect-scrollbar.min.js?1656244436"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/featherlight.min.js?1656244436"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/theme.js?1656244436"></script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+</script>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </body>
+</html>
+

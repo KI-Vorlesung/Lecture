@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Informierte Suche on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/</link>
+    <description>Recent content in Informierte Suche on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Suche mit Branch-and-Bound</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/branchandbound/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/branchandbound/</guid>
+      <description>Hole das Buch   =&amp;gt; Problemlösen == Suche im Graphen
+Informierte Suche: Nutzung der Kostenfunktion:
+Gesamtkosten: $f(n) = g(n) + h(n)$
+ $n \in S$ auf aktuellem Weg erreichter Knoten $g(n)$ tatsächliche Kosten für Weg vom Start bis Knoten $n$ $h(n)$ geschätzte Restkosten für Weg von Knoten $n$ zum Ziel =&amp;gt; $h(n)$ wird auch &amp;quot;heuristische Funktion&amp;quot; oder &amp;quot;Heuristik&amp;quot; genannt  Varianten:
+ Branch-and-Bound Best First A*  Branch-and-Bound (BnB) Variante der Breitensuche mit Kosten</description>
+    </item>
+    <item>
+      <title>Suche mit Best First</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/bestfirst/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/bestfirst/</guid>
+      <description>Hole das Buch   =&amp;gt; Problemlösen == Suche im Graphen
+Informierte Suche: Nutzung der Kostenfunktion:
+Gesamtkosten: $f(n) = g(n) + h(n)$
+ $n \in S$ auf aktuellem Weg erreichter Knoten $g(n)$ tatsächliche Kosten für Weg vom Start bis Knoten $n$ $h(n)$ geschätzte Restkosten für Weg von Knoten $n$ zum Ziel =&amp;gt; $h(n)$ wird auch &amp;quot;heuristische Funktion&amp;quot; oder &amp;quot;Heuristik&amp;quot; genannt  Varianten:
+ Branch-and-Bound Best First A*  Best-First (BF, BFS)   Idee: Expandiere den partiellen Weg, der verspricht, dem Ziel am nächsten zu sein (Heuristik)</description>
+    </item>
+    <item>
+      <title>Suche mit A*</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/astar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/astar/</guid>
+      <description>Hole das Buch   =&amp;gt; Problemlösen == Suche im Graphen
+Informierte Suche: Nutzung der Kostenfunktion:
+Gesamtkosten: $f(n) = g(n) + h(n)$
+ $n \in S$ auf aktuellem Weg erreichter Knoten $g(n)$ tatsächliche Kosten für Weg vom Start bis Knoten $n$ $h(n)$ geschätzte Restkosten für Weg von Knoten $n$ zum Ziel =&amp;gt; $h(n)$ wird auch &amp;quot;heuristische Funktion&amp;quot; oder &amp;quot;Heuristik&amp;quot; genannt  Varianten:
+ Branch-and-Bound Best First A*  A*-Suche   Kombination aus Branch-and-Bound und Best-First-Suche</description>
+    </item>
+  </channel>
+</rss>

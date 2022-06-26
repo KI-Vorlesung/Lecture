@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Organisatorisches on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/</link>
+    <description>Recent content in Organisatorisches on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fahrplan</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/schedule/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/schedule/</guid>
+      <description>Woche Vorlesung Praktikum/Übung      1 (KW40)   04.10.21 (Sprechstunde: cagix)   ORG &amp;gt; Syllabus Hinweis: Kick-Off FHB (cagix und Canan)   INTRO &amp;gt; Einführung KI   INTRO &amp;gt; Problemlösen   &amp;gt;&amp;gt; KW41 freigeschaltet. Blatt 1 bearbeiten!
+       2 (KW41)   11.10.21 (Sprechstunde: cagix)   SEARCH &amp;gt; UNINFORMED &amp;gt; Tiefensuche   SEARCH &amp;gt; UNINFORMED &amp;gt; Breitensuche   SEARCH &amp;gt; INFORMED &amp;gt; Branch-and-Bound   SEARCH &amp;gt; INFORMED &amp;gt; Best First   SEARCH &amp;gt; INFORMED &amp;gt; A*   &amp;gt;&amp;gt; KW42 freigeschaltet.</description>
+    </item>
+    <item>
+      <title>Syllabus</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/syllabus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/syllabus/</guid>
+      <description>Worum geht&#39;s hier?  Quelle: AvB - RoboCup 2013 - Eindhoven, by RoboCup2013, licensed under CC BY 2.0
+Was ist Intelligenz? Was ist künstliche Intelligenz?  Wie baut man intelligente Systeme? Was braucht man für &amp;quot;Cmdr. Data&amp;quot;? Welche Teilgebiete existieren? Welche Methoden und Algorithmen gibt es? Wie funktionieren die?  Ziele  Hineinschnuppern in fast alle Fächer des &amp;quot;Apothekenschranks&amp;quot;: Wie funktioniert&#39;s, wozu ist es gut? Methoden-Baukasten zur Lösung unterschiedlichster Probleme Grundlegendes Verständnis für Anwendungen in Spielen, Navigation, Planung, smarten Assistenten, autonomen Fahrzeuge  Überblick Modulinhalte  Problemlösen  Zustände, Aktionen, Problemraum Suche (blind, informiert): Breiten-, Tiefensuche, Best-First, Branch-and-Bound, A-Stern Lokale Suche: Gradientenabstieg, Genetische/Evolutionäre Algorithmen (GA/EA) Spiele: Minimax, Alpha-Beta-Pruning, Heuristiken Constraints: Backtracking, Heuristiken, Propagation, AC-3    Maschinelles Lernen  Merkmalsvektor, Trainingsmenge, Trainingsfehler, Generalisierung Entscheidungsbäume: CAL2, CAL3, ID3, C4.</description>
+    </item>
+    <item>
+      <title>Ressourcen</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/resources/</guid>
+      <description>Was brauche ich? Literatur ... Basics (&amp;quot;Must Have&amp;quot;!)  &amp;quot;Artificial Intelligence: A Modern Approach&amp;quot; (AIMA): [Russell2020] &amp;quot;Introduction to Artificial Intelligence&amp;quot;: [Ertel2017] &amp;quot;Machine Learning&amp;quot;: [Mitchell2010]  Weitere empfohlene Literatur Falls der [Russell2020] noch nicht erhältlich ist, kann auch eine ältere Ausgabe (etwa [Russell2014]) verwendet werden.
+Ergänzend zum [Russell2020] empfiehlt sich ein Blick in [Ertel2017] (bzw. [Ertel2016], als etwas ältere deutschsprachige Ausgabe), wo ebenfalls beinahe alle Themen besprochen werden.
+Speziell zum Thema Machine Learning seien [Kubat2017] und [Mitchell2010] empfohlen.</description>
+    </item>
+    <item>
+      <title>Modulvorstellung Künstliche Intelligenz (Wahlfach Liste 1)</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/teaser/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/teaser/</guid>
+      <description>Was ist Künstliche Intelligenz?  Quelle: AvB - RoboCup 2013 - Eindhoven, by RoboCup2013, licensed under CC BY 2.0
+Überblick über wichtige Methoden &amp;amp; Gebiete der KI  2 SWS Vorlesung (E-Klausur), 2 SWS Praktikum mit Testat</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.96.0" />
+    <meta name="generator" content="Relearn 3.4.1&#43;tip">
+    <meta name="description" content="">
+    <meta name="author" content="cagix">
+    <title>Lokale Suche: Simulated Annealing   </title>
+    <link rel="icon" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/images/logo.png?1656244437" type="image/png">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/nucleus.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/fontawesome-all.min.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/featherlight.min.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/perfect-scrollbar.min.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/auto-complete.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/theme.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/theme-relearn-light.css?1656244437" rel="stylesheet" id="variant-style">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/variant.css?1656244437" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/print.css?1656244437" rel="stylesheet" media="print">
+    <style>
+      :not(pre) > code.copy-to-clipboard-code + span.copy-to-clipboard-button {
+        display: none;
+      }
+      :not(pre) > code.copy-to-clipboard-code {
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        border-right-width: 1px;
+      }
+    </style>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/variant.js?1656244437"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/index.json";
+      var root_url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/www.fh-bielefeld.de\/elearning\/data\/FH-Bielefeld\/lm_data\/lm_1166002/';
+      variants.init( [ 'relearn-light', 'relearn-dark', 'green' ] );
+    </script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/jquery.min.js?1656244437"></script><style type="text/css">
+
+ 
+.center {
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+.alert {
+    color: #ff3333;
+}
+.bsp {
+    padding: 0.05cm;
+    border-width: 0.05cm;
+    border-style: solid;
+    border-color: #ddd;
+    background-color: #ddd;
+    border-radius: 25px;
+    float: right;
+}
+.cbox {
+    padding: 0.2cm;
+    border-width: 0.1cm;
+    border-style: solid;
+    border-color: #4070a0;
+    background-color: #f2f2f2;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    overflow: auto;
+}
+.blueArrow {
+    color: #4070a0;
+    font-family: "Courier New", "Courier", monospace;
+    font-weight: bold;
+}
+.origin {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+.showme {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+
+
+ 
+.tldr {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.recap {
+    
+    
+   margin: 4px 0px 26px 0px;
+}
+.bib {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.outcomes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.quizzes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.challenges {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.assignments {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+h1.tldr, h1.recap, h1.bib, h1.outcomes, h1.quizzes, h1.challenges, h1.assignments {
+    padding: 0px;
+}
+
+
+ 
+.noJsAlert {
+    padding: 20px;
+    background-color: #f44336;  
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+ 
+.embed-video-player {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+    overflow: hidden;
+}
+.youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border:0;
+}
+
+
+ 
+#header-wrapper {
+    padding:0.6rem;
+}
+
+
+ 
+#shortcuts {
+    padding-top: 2.0rem;
+}
+
+
+ 
+#chapter p {
+    text-align: left;
+}
+
+
+ 
+figcaption h4 {
+    margin-top:-2.5rem;
+}
+.border1 {
+    border:1px solid black;
+}
+
+ 
+td ul, td ol {
+    margin: 0 0 1rem 0.5rem;
+    padding: 0 0 0 0.5rem;
+}
+
+ 
+h1 { font-size:2.8rem !important;}
+h2 { font-size:2.2rem; margin:1.2rem 0}
+h3 { font-size:1.9rem; text-align:left !important; font-weight:400 !important;}
+h4 { font-size:1.6rem}
+h5 { font-size:1.3rem}
+h6 { font-size:1rem}
+
+h2 {
+    width:100% !important;
+    border-bottom:1px solid #5e5e5e !important;
+    padding-bottom: 2px;
+}
+.tldr h2, .recap h2, .bib h2, .outcomes h2, .quizzes h2, .challenges h2, .assignments h2 {
+    margin:0.5rem 0
+}
+
+.btn-crossreference, .btn-crossreference:hover {
+    cursor: initial !important;
+    color: #333 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;
+}
+
+</style>
+
+  </head>
+  <body class="mobile-support" data-url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/KI-Vorlesung/Lecture/edit/master/markdown/search/local/annealing.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/"><span itemprop="name">KI W21</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/"><span itemprop="name">Suche</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/"><span itemprop="name">Lokale Suche</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/" aria-disabled="true"><span itemprop="name">Lokale Suche: Simulated Annealing</span></a></li>
+            </ol>
+          </div>
+          <div class="default-animation progress">
+            <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#gedankenexperiment-ausweg-aus-lokalen-minima">Gedankenexperiment: Ausweg aus lokalen Minima</a></li>
+    <li><a href="#analogie-härten-von-metall">Analogie Härten von Metall</a></li>
+    <li><a href="#übertragen-der-idee">Übertragen der Idee</a></li>
+    <li><a href="#pseudocode-simulated-annealing-minimierungsproblem">Pseudocode Simulated Annealing (Minimierungsproblem)</a></li>
+    <li><a href="#detail-akzeptieren-von-verschlechterungen">Detail: Akzeptieren von Verschlechterungen</a></li>
+    <li><a href="#abkühlungsplan-problemabhängig-wählen">Abkühlungsplan problemabhängig wählen</a></li>
+    <li><a href="#eigenschaften-simulated-annealing">Eigenschaften Simulated Annealing</a></li>
+    <li><a href="#anwendungen-von-simulated-annealing">Anwendungen von Simulated Annealing</a></li>
+    <li><a href="#wrap-up">Wrap-Up</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+
+
+
+    
+
+
+
+
+
+
+<div class="tldr">
+    <h2>TL;DR</h2>
+
+    
+
+    
+        <p>Lokale Suchverfahren: Nur das Ergebnis zählt! Nicht der Weg ist das Ziel, sondern nur
+das Erreichen des Ziels.</p>
+<p>Das Problem bei der Gradientensuche ist, dass man eine Kostenfunktion benötigt und
+diese auch <strong>lokale Minima</strong> enthalten kann. Mit der reinen Gradientensuche würde
+man bei Erreichen lokaler Minima die Suche abbrechen (müssen), da es keine weitere
+Verbesserung unter den Nachfolgern mehr geben kann. In Anlehnung an das Abkühlen von
+Metall kann hier eine Variante der lokalen Suche helfen: <strong>Simulated Annealing</strong>.
+Man führt einen &quot;Temperatur&quot;-Parameter ein, der im Laufe der Suche immer kleiner
+wird und schließlich gegen Null geht. In Abhängigkeit von dieser &quot;Temperatur&quot; wird
+mit einer bestimmten Wahrscheinlichkeit eine Verschlechterung akzeptiert: Bei einer
+hohen Temperatur ist diese Wahrscheinlichkeit höher, bei einer niedrigen Temperatur
+niedriger, so dass das Verfahren in ein normales Hill-Climbing übergeht. Damit kann
+man ein Festfressen in lokalen Minima vermeiden bzw. überwinden.</p>
+
+    
+
+    
+        <h3>Videos (YouTube)</h3>
+        
+
+<ul>
+
+    
+    
+
+    
+
+    
+    
+        <li><a href="https://youtu.be/vPg7PWuY2bM" target="_blank" rel="nofollow noopener noreferrer">VL Simulated Annealing</a></li>
+    
+
+</ul>
+
+    
+
+    
+        <h3>Videos (FH-Medienportal)</h3>
+        
+
+<ul>
+
+    
+    
+
+    
+    
+    
+
+    
+        <li><a href="https://www.fh-bielefeld.de/medienportal/m/5abd7e34f28bedb07ac3c4d9665a493bbf5b5cedfb97e91f9f2d8be0a3bace4e628a0b0ac2530e146ccbb0fd2de2fc99b48604d15c8b864b3f58825e8ca99260" target="_blank" rel="nofollow noopener noreferrer">VL Simulated Annealing</a></li>
+    
+
+</ul>
+
+    
+
+    
+
+</div>
+
+
+    
+
+
+
+<div class="outcomes">
+    <h2>Lernziele</h2>
+
+    
+
+    
+    
+    <ul>
+    
+        
+        <li>(K2) Funktionsweise Simulated Annealing</li>
+        
+        
+    
+    </ul>
+    
+
+</div>
+
+
+    <h2 id="motivation">Motivation</h2>
+<div class='center'>
+<figure class="center" style="width:60%">
+    <img alt="" src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/images/hill-climbing.png" class="" />
+</figure>
+</div>
+<p><span class='alert'><strong>Problem</strong></span>: lokale Maxima und Plateaus</p>
+<ul>
+<li>Lokale Maxima/Minima: Algorithmus findet nur eine suboptimale Lösung</li>
+<li>Plateaus: Hier muss der Algorithmus mit zufälligen Zügen explorieren</li>
+</ul>
+<p>Mögliche Lösungen:</p>
+<ul>
+<li>Neustart des Algorithmus, wenn kein Fortschritt erzielt wird</li>
+<li>Rauschen &quot;injizieren&quot;</li>
+</ul>
+<h2 id="gedankenexperiment-ausweg-aus-lokalen-minima">Gedankenexperiment: Ausweg aus lokalen Minima</h2>
+<ul>
+<li>&quot;Drehen der Landschaft&quot;: Minimieren statt Maximieren</li>
+<li>Ball wird in Zustandsraum-Landschaft gesetzt.</li>
+<li>Folge:
+<ul>
+<li>rollt steilsten Abstieg hinunter</li>
+<li>rollt evtl. in Tal auf halber Höhe (lokales Minimum)
+=&gt; bleibt dort gefangen</li>
+</ul>
+</li>
+</ul>
+<p>=&gt; &quot;<span class='alert'><strong>Schütteln</strong></span> der Landschaft&quot; -- Ball springt aus dem Tal und
+rollt in anderes Tal</p>
+<p>Nicht zu stark schütteln -- sonst wird u.U. globales Minimum verlassen!</p>
+<h2 id="analogie-härten-von-metall">Analogie Härten von Metall</h2>
+<ul>
+<li>Metall erhitzen bis Atome frei beweglich</li>
+<li>Langsam abkühlen</li>
+</ul>
+<p>=&gt; stabiles Atomgitter mit minimalem Energiezustand</p>
+<h2 id="übertragen-der-idee">Übertragen der Idee</h2>
+<ul>
+<li>Starkes &quot;Schütteln&quot; (hohe &quot;Temperatur&quot;) am Anfang</li>
+<li>Schrittweises &quot;Abkühlen&quot; =&gt; &quot;Schütteln&quot; im Laufe der Zeit
+verringern</li>
+</ul>
+<p>=&gt; <span class='alert'><strong>Simulated Annealing</strong></span></p>
+<h2 id="pseudocode-simulated-annealing-minimierungsproblem">Pseudocode Simulated Annealing (Minimierungsproblem)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">simulated_annealing</span>(problem):
+</span></span><span style="display:flex;"><span>    current <span style="color:#f92672">=</span> problem<span style="color:#f92672">.</span>startNode
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  temp <span style="color:#f92672">=</span> schedule(t)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> temp<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> schedule(<span style="color:#f92672">++</span>t)
+</span></span><span style="display:flex;"><span>        neighbors <span style="color:#f92672">=</span> current<span style="color:#f92672">.</span>expandSuccessors()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> neighbors: <span style="color:#66d9ef">return</span> current
+</span></span><span style="display:flex;"><span>        working <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(neighbors)
+</span></span><span style="display:flex;"><span>        dE <span style="color:#f92672">=</span> problem<span style="color:#f92672">.</span>value(current) <span style="color:#f92672">-</span> problem<span style="color:#f92672">.</span>value(working)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> dE <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> probability(math<span style="color:#f92672">.</span>exp(dE<span style="color:#f92672">/</span>temp)):
+</span></span><span style="display:flex;"><span>            current <span style="color:#f92672">=</span> working
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> current
+</span></span></code></pre></div><p>Wenn <code>dE</code> positiv ist, dann ist der Nachfolger &quot;besser&quot; (hier: kleiner bewertet) als der aktuelle Knoten und wird immer
+als nächster Knoten übernommen.</p>
+<p>Wenn <code>dE</code> negativ ist, dann ist der betrachtete Nachfolger &quot;schlechter&quot; (hier: größer bewertet) als der aktuelle Knoten.
+Dann wird er mit einer Wahrscheinlichkeit <code>math.exp(dE/temp)</code> als nächster Knoten übernommen. Diese
+Wahrscheinlichkeit ist bei hohen Temperaturen <code>temp</code> eher hoch, und sinkt, je niedriger die Temperatur <code>temp</code> wird.</p>
+<p>Die Temperatur <code>temp</code> bewegt sich dabei von hohen positiven Werten auf den Wert Null (wird also nicht negativ).</p>
+<h2 id="detail-akzeptieren-von-verschlechterungen">Detail: Akzeptieren von Verschlechterungen</h2>
+<div class='center'>
+<figure class="center" style="width:60%">
+    <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Exp_e.svg/524px-Exp_e.svg.png" class="" />
+</figure>
+<p><span class='origin'>Quelle: Marcel Marnitz, reworked by <a href="https://commons.wikimedia.org/wiki/User:Georg-Johann">user:Georg-Johann</a>, <a href="https://commons.wikimedia.org/wiki/File:Exp_e.svg">&quot;Exp e&quot;</a>, licensed as <a href="https://en.wikipedia.org/wiki/Public_domain">public domain</a></span></p>
+</div>
+<ul>
+<li>Wahrscheinlichkeit zum Akzeptieren einer Verschlechterung: <span>$math.exp(dE/temp)$</span></li>
+<li><span>$dE$</span> negativ =&gt; <span>$\exp\left(\text{dE}/\text{temp}\right) = \exp\left(-\frac{|\text{dE}|}{\text{temp}}\right) = \frac{1}{\exp\left(\frac{|\text{dE}|}{\text{temp}}\right)}$</span></li>
+</ul>
+<p><span>$\exp(a)$</span> bzw. <span>$e^a$</span>:</p>
+<ul>
+<li><span>$a&lt;0$</span>: geht gegen 0</li>
+<li><span>$a=0$</span>: 1</li>
+<li><span>$a&gt;0$</span>: steil (exponentiell) gegen Unendlich ...</li>
+</ul>
+<p>Wenn <span>$dE$</span> negativ ist, wird <span>$math.exp(dE/temp)$</span> ausgewertet. Damit ergibt sich wegen <span>$dE$</span> negativ:
+<span>$\exp\left(\text{dE}/\text{temp}\right) = \exp\left(-\frac{|\text{dE}|}{\text{temp}}\right) = \frac{1}{\exp\left(\frac{|\text{dE}|}{\text{temp}}\right)}$</span>.
+Betrachtung für <span>$dE$</span> (nur negativer Fall!) und <span>$temp$</span>:</p>
+<ul>
+<li>Temperatur <span>$temp$</span> hoch: <span>$a = \frac{|\text{dE}|}{\text{temp}}$</span> ist positiv und klein (nahe Null), d.h. <span>$\exp(a)$</span> nahe 1 (oder
+größer), d.h. die Wahrscheinlichkeit <span>$1/\exp(a)$</span> ist nahe 1 (oder kleiner)</li>
+<li>Temperatur <span>$temp$</span> wird kleiner und geht gegen Null: <span>$a = \frac{|\text{dE}|}{\text{temp}}$</span> ist positiv und wird größer, d.h.
+<span>$\exp(a)$</span> geht schnell gegen Unendlich, d.h. die Wahrscheinlichkeit <span>$1/\exp(a)$</span> geht gegen 0</li>
+</ul>
+<h2 id="abkühlungsplan-problemabhängig-wählen">Abkühlungsplan problemabhängig wählen</h2>
+<ul>
+<li>
+<p>Initiale Temperatur: So hoch, daß praktisch jede Änderung akzeptiert wird</p>
+</li>
+<li>
+<p>Abkühlen: <span>$T_k = \alpha T_{k-1}$</span> mit <span>$0.8 \le \alpha \le 0.99$</span></p>
+<ul>
+<li>Ausreichend langsam abkühlen!</li>
+<li>Typisch: jede Stufe so lange halten, daß etwa 10 Änderungen akzeptiert wurden</li>
+</ul>
+</li>
+<li>
+<p>Stop: Keine Verbesserungen in 3 aufeinander folgenden Temperaturen</p>
+</li>
+</ul>
+<p>Der Abkühlungsplan muss problemabhängig gewählt werden. Das Beispiel zeigt typische Elementes
+eines solchen Abkühlungsplans.</p>
+<h2 id="eigenschaften-simulated-annealing">Eigenschaften Simulated Annealing</h2>
+<ul>
+<li>Vollständigkeit: ja (mit gewisser Wahrscheinlichkeit)</li>
+<li>Optimalität: ja (mit gewisser Wahrscheinlichkeit)</li>
+</ul>
+<p>Voraussetzung: geeigneter Abkühlungsplan</p>
+<h2 id="anwendungen-von-simulated-annealing">Anwendungen von Simulated Annealing</h2>
+<ul>
+<li>Flugplan-Scheduling</li>
+<li>Layout-Probleme (Chipentwurf, Leiterplatten)</li>
+<li>Produktionsplanung</li>
+</ul>
+<h2 id="wrap-up">Wrap-Up</h2>
+<p>Lokale Suchverfahren: Nur das Ergebnis zählt!</p>
+<ul>
+<li>Gradientenverfahren
+<ul>
+<li>Analogie Bergsteigen: Gehe in Richtung des stärksten Anstiegs der
+Kostenfunktion =&gt; <strong>Hill-Climbing</strong></li>
+<li>Achtung: Probleme mit lokalen Minima =&gt; <strong>Simulated Annealing</strong></li>
+</ul>
+</li>
+</ul>
+
+    
+
+
+<div class="quizzes">
+    <h2>Quizzes</h2>
+
+    <ul>
+    
+        
+        
+        
+        <li>
+            <a href="https://kahoot.it/challenge/05934871?challenge-id=8471c25d-77c6-4c83-b473-6edcacfcb770_1634138238676" class="icon reading" target="_blank" rel="nofollow noopener noreferrer"><strong>Selbsttest Simulated Annealing (Kahoot)</strong></a>
+        </li>
+        
+    
+    </ul>
+
+</div>
+
+
+    
+
+
+
+<div class="assignments">
+    <h2>Übungsblätter/Aufgaben</h2>
+
+    <ul>
+    
+        
+        
+        
+            <li>
+                <a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet02/"><strong>Blatt 02: Lokale Suche, GA</strong></a>
+                 (Abgabe: 20.10.2021)
+            </li>
+        
+    
+    </ul>
+
+</div>
+
+
+    
+
+
+
+<div class="bib">
+    <h2>Quellen</h2>
+
+    <ul>
+    
+        
+        
+
+        
+            
+            
+            
+            
+            
+
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+            
+            
+            
+            
+            
+
+            <li id="id_Russell2020">
+            
+                [Russell2020] <a href="http://aima.cs.berkeley.edu" class="icon reading" target="_blank" rel="nofollow noopener noreferrer"><strong>Artificial intelligence: A modern approach</strong></a>
+            
+            
+                <br>Russell, S. und Norvig, P., Pearson, 2020.
+                
+                    ISBN <a href="https://www.digibib.net/openurl/Bi10?isbn=978-0134610993" target="_blank" rel="nofollow noopener noreferrer">978-0134610993</a>.
+                
+                
+            
+            
+                <br><em>Simulated Annealing: Abschnitt 4.1.2</em>
+            
+            </li>
+        
+
+    
+    </ul>
+
+</div>
+
+
+
+
+
+
+        </div>
+      </main><p><div style="color: darkgray; font-size: smaller;">
+<p style="margin-left: 1rem;">
+    <!-- https://creativecommons.org/choose/ -->
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;margin:0;display:inline;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> Unless otherwise noted, <a href="https://github.com/KI-Vorlesung/Lecture">this work</a> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/cyildiz" property="cc:attributionName" rel="cc:attributionURL">Canan Yıldız</a>, <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/cagix" property="cc:attributionName" rel="cc:attributionURL">Carsten Gips</a>, and <a href="https://github.com/KI-Vorlesung/Lecture/graphs/contributors">contributors</a> is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+<br />
+    Icons by <a href="https://fontawesome.com/">Font Awesome</a>.
+    Built with <a href="https://github.com/jgm/pandoc">Pandoc</a> using <a href="https://github.com/cagix/pandoc-lecture">Pandoc-Lecture</a> and <a href="https://github.com/gohugoio/hugo">Hugo</a> using the <a href="https://github.com/McShelby/hugo-theme-relearn">Hugo Relearn Theme</a>.
+</p>
+</div>
+<div style="color: darkgray; font-size: smaller;">
+</p>
+
+    </div>
+    <aside id="sidebar" class="default-animation showVisitedLinks">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
+<a id="logo" href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002'>
+    <img style="max-width:35%" alt="icon" src='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/images/logo.png'>
+</a>
+
+        </div>
+      </div>
+      <div id="content-wrapper" class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/intro/" title="Einführung KI" class="dd-item"><input type="checkbox" id="section-925e5bfbd01266c727d74ae1db5ab0c6" class="toggle"/><label for="section-925e5bfbd01266c727d74ae1db5ab0c6" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/">Einführung KI<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/intro/intro-ai/" title="Intro: Was ist Künstliche Intelligenz?" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/intro-ai/">Einführung KI<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/intro/problems/" title="Problemlösen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/problems/">Problemlösen<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/" title="Suche" class="dd-item parent"><input type="checkbox" id="section-08cfb6301b533c954681b7845aa7e62a" class="toggle" checked/><label for="section-08cfb6301b533c954681b7845aa7e62a" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/">Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/uninformed/" title="Uninformierte Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-81ce67a4c4f848b49be6e8b0a77d0660" class="toggle" checked/><label for="section-81ce67a4c4f848b49be6e8b0a77d0660" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/">Uninformierte Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/uninformed/dfs/" title="Suche mit Tiefensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/dfs/">Tiefensuche<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/uninformed/bfs/" title="Suche mit Breitensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/bfs/">Breitensuche<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/informed/" title="Informierte Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-e57a324c0a87423ed05b8615c3fc14c6" class="toggle" checked/><label for="section-e57a324c0a87423ed05b8615c3fc14c6" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/">Informierte Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/informed/branchandbound/" title="Suche mit Branch-and-Bound" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/branchandbound/">Branch-and-Bound<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/informed/bestfirst/" title="Suche mit Best First" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/bestfirst/">Best First<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/informed/astar/" title="Suche mit A*" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/astar/">A*<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/local/" title="Lokale Suche" class="dd-item parent alwaysopen"><input type="checkbox" id="section-3df58c316d8cceefc4f029351d45366f" class="toggle" checked/><label for="section-3df58c316d8cceefc4f029351d45366f" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/">Lokale Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/local/gradient/" title="Lokale Suche: Gradientensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/gradient/">Gradientensuche<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/local/annealing/" title="Lokale Suche: Simulated Annealing" class="dd-item active"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/">Simulated Annealing<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li>
+          <li data-nav-id="/ea/" title="Genetische Algorithmen" class="dd-item"><input type="checkbox" id="section-4427743bb3613ebd9fb288dea49d1f12" class="toggle"/><label for="section-4427743bb3613ebd9fb288dea49d1f12" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/">Genetische Algorithmen<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/ea/intro/" title="Einführung Evolutionäre Algorithmen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/intro/">Intro EA/GA<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/ea/ga/" title="Modellierung mit Genetischen Algorithmen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/ga/">Genetische Algorithmen<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/games/" title="Spiele" class="dd-item"><input type="checkbox" id="section-dcab5a097c2e0bc19131dd59a2fac20e" class="toggle"/><label for="section-dcab5a097c2e0bc19131dd59a2fac20e" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/">Spiele<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/games/intro/" title="Einführung Optimale Spiele" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/intro/">Optimale Spiele<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/minimax/" title="Minimax" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/minimax/">Minimax<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/heuristics/" title="Heuristiken" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/heuristics/">Heuristiken<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/alphabeta/" title="Alpha-Beta-Pruning" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/alphabeta/">Alpha-Beta-Pruning<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/csp/" title="Constraintsolving" class="dd-item"><input type="checkbox" id="section-af49da79e06eb6041df4c439c33a1423" class="toggle"/><label for="section-af49da79e06eb6041df4c439c33a1423" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/">CSP<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/csp/intro/" title="Einführung Constraints" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/intro/">Intro<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/backtrackingsearch/" title="Lösen von diskreten CSP" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/backtrackingsearch/">Lösen von diskreten CSP<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/heuristics/" title="Heuristiken" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/heuristics/">Heuristiken<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/ac3/" title="Kantenkonsistenz und AC-3" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/ac3/">AC-3<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/dtl/" title="Entscheidungsbäume" class="dd-item"><input type="checkbox" id="section-4574116219561e15eeac8b4524c3245f" class="toggle"/><label for="section-4574116219561e15eeac8b4524c3245f" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/">Entscheidungsbäume<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/dtl/mlbasics/" title="Machine Learning 101" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/mlbasics/">Machine Learning 101<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/cal2/" title="CAL2" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal2/">CAL2<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/pruning/" title="Pruning" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/pruning/">Pruning<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/cal3/" title="CAL3" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal3/">CAL3<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/entropy/" title="Entropie" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/entropy/">Entropie<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/id3/" title="ID3 und C4.5" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/id3/">ID3 und C4.5<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/naivebayes/" title="Naive Bayes" class="dd-item"><input type="checkbox" id="section-2de9e17830839ea2a34b596e2636549b" class="toggle"/><label for="section-2de9e17830839ea2a34b596e2636549b" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/">Naive Bayes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/naivebayes/probability/" title="Wiederholung Wahrscheinlichkeitstheorie" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/probability/">Wahrscheinlichkeiten<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/naivebayes/nb/" title="Klassifikation mit Naive Bayes" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/">Naive Bayes<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/nn/" title="NN: Einführung in Neuronale Netze" class="dd-item"><input type="checkbox" id="section-59dd9ac0a3ddcf6aaf56356bae885f3c" class="toggle"/><label for="section-59dd9ac0a3ddcf6aaf56356bae885f3c" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/">Neuronale Netze<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/nn/nn1_perceptron/" title="NN1 - Das Perzeptron" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn1_perceptron/">NN1 - Perzeptron<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn2_linear_regression/" title="NN2 - Lineare Regression" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn2_linear_regression/">NN2 - Lineare Regression<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn3_logistic_regression/" title="NN3 - Logistische Regression" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn3_logistic_regression/">NN3 - Logistische Regression<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn4_overfitting/" title="NN4 - Overfitting und Regularisierung" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn4_overfitting/">NN4 - Overfitting<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn5_mlp/" title="NN5 - Multilayer Perzeptron" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn5_mlp/">NN5 - MLP<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn6_backprop/" title="NN6 - Backpropagation" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn6_backprop/">NN6 - Backpropagation<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn7_training_testing/" title="NN7 - Training &amp; Testing" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn7_training_testing/">NN7 - Training &amp; Testing<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn8_testing/" title="NN8 - Performanzanalyse" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn8_testing/">NN8 - Performanzanalyse<i class="fas fa-check read-icon"></i></a></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/schedule"><i class='fas fa-bookmark'></i> Fahrplan</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments"><i class='fas fa-bookmark'></i> Praktikum</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/grading"><i class='fas fa-bookmark'></i> Note/Credits</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/syllabus"><i class='fas fa-bookmark'></i> Syllabus</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/resources"><i class='fas fa-bookmark'></i> Ressourcen</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/exam"><i class='fas fa-bookmark'></i> Prüfungsvorbereitung</a></li>
+          </ul>
+        </div>
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVariantSwitch showVisitedLinks">
+          <ul>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch showVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="relearn-dark" value="relearn-dark">Relearn Dark</option>
+                    <option id="green" value="green">Green</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+          </ul>
+        </div>
+        <div id="footer" class="footerFooter showFooter"><p style="margin-left: 1rem;">
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/imprint'>Impressum</a>,
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/privacy'>Datenschutz</a>,
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/credits'>Credits</a>
+</p>
+
+        </div>
+      </div>
+    </aside>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/clipboard.min.js?1656244437"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/perfect-scrollbar.min.js?1656244437"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/featherlight.min.js?1656244437"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/theme.js?1656244437"></script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+</script>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </body>
+</html>
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spiele on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/</link>
+    <description>Recent content in Spiele on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Einführung Optimale Spiele</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/intro/</guid>
+      <description>Backgammon: Zwei Spieler, was ist der beste Zug?  Quelle: &amp;quot;position-backgammon-decembre&amp;quot; by serialgamer_fr, licensed under CC BY 2.0
+ Zwei Spieler, ein Spielstand und ein Würfelergebnis: Was ist jetzt der beste Zug?!
+Motivation: Unterschied zu Suche?!   =&amp;gt; Mehrere konkurrierende Agenten an Suche beteiligt!
+=&amp;gt; (Re-) Aktion des Gegners unbekannt/nicht vorhersehbar.
+Spiele und Umgebungen     Deterministisch Zufallskomponente     Voll beobachtbar Schach, Go, ... Backgammon, Monopoly   Partiell beobachtbar Schiffe-versenken Bridge, Poker, Skat, .</description>
+    </item>
+    <item>
+      <title>Minimax</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/minimax/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/minimax/</guid>
+      <description>Spiele als Suchproblem: Minimax Terminologie   Zwei abwechselnd spielende Spieler: MAX und MIN, wobei MAX beginnt
+ Beide Spieler spielen in jedem Zug optimal Spielergebnis wird aus Sicht von MAX bewertet:  $+1$, wenn Spieler MAX gewinnt $-1$, wenn Spieler MIN gewinnt $0$, wenn unentschieden   Spieler MAX versucht, das Spielergebnis zu maximieren Spieler MIN versucht, das Spielergebnis zu minimieren    Startzustand: Initialer Zustand des Spielbrettes</description>
+    </item>
+    <item>
+      <title>Heuristiken</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/heuristics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/heuristics/</guid>
+      <description>Wenn die Zeit nicht reicht: Suchtiefe begrenzen   Einführung neuer Funktionen:
+  Cutoff-Test statt Terminal-Test
+Beispielsweise bei erreichter Tiefe oder Zeitüberschreitung
+  Eval statt Utility
+Bewertung der erreichten Position (statt nur Bewertung des Endzustandes)
+    Bedingungen an Eval:
+ Endknoten in selber Reihenfolge wie bei Utility Schnell zu berechnen (!)    Beispiel Schach   Mögliche Evaluierungskriterien:
+ Materialwert: Bauer 1, Läufer/Springer 3, Turm 5, Dame 9 Stellungsbewertung: Sicherheit des Königs, Stellung der Bauern Daumenregeln: 3 Punkte Vorteil =&amp;gt; sicherer Sieg    Nutzung gewichteter Features $f_i$: $\operatorname{Eval}(s) = w_1f_1(s) + w_2f_2(s) + \ldots$</description>
+    </item>
+    <item>
+      <title>Alpha-Beta-Pruning</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/alphabeta/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/alphabeta/</guid>
+      <description>Verbesserung Minimax-Algorithmus  =&amp;gt; Minimax-Baum: Verbesserungen möglich?
+Tafelbeispiel: Baum und Verbesserungen   Alpha-beta-Pruning Minimax-Algorithmus mit zusätzlichen Informationen:
+ $\alpha$: bisher bester Wert für MAX (höchster Wert) $\beta$: bisher bester Wert für MIN (kleinster Wert)  =&amp;gt; Beobachtungen:
+ $\alpha$ für MAX-Knoten wird nie kleiner $\beta$ für MIN-Knoten wird nie größer  Tafelbeispiel: Beste Werte einzeichnen   Pruning-Regeln   Schneide (unter) MIN-Knoten ab, deren $\beta$ $\le$ dem $\alpha$ des MAX-Vorgängers ist.</description>
+    </item>
+  </channel>
+</rss>

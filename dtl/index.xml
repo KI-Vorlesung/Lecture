@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Entscheidungsbäume on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/</link>
+    <description>Recent content in Entscheidungsbäume on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Machine Learning 101</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/mlbasics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/mlbasics/</guid>
+      <description>Was ist Lernen?  Verhaltensänderung eines Agenten in Richtung der Optimierung eines Gütefunktionals (Bewertungsfunktion) durch Erfahrung.
+ Warum Lernen?  Nicht alle Situationen vorhersehbar Nicht alle Details modellierbar Lösung oder Lösungsweg unbekannt, nicht explizit programmierbar Data Mining: Entdeckung neuen Wissens durch Analyse der Daten Selbstanpassende Programme  =&amp;gt; Lernen wichtige Eigenschaft lebender Wesen :-)
+Learning Agent   Feedback während des Lernens   Überwachtes Lernen
+ Lernen durch Beobachtung Vorgabe von Beispielen: Ein- und Ausgabewerte  =&amp;gt; Regression, Klassifikation</description>
+    </item>
+    <item>
+      <title>CAL2</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal2/</guid>
+      <description>Entscheidungsbäume: Klassifikation    Attribute als Knoten im Baum Ausprägungen als Test (Ausgang, Verzweigung) Klasse (Funktionswert) als Blatt  Erinnern Sie sich an das Beispiel mit der Auto-Reparatur aus der letzten Sitzung.
+Die relevanten Eigenschaften (Merkmale) eines Autos würden als Knoten im Baum repräsentiert. Beispiel: &amp;quot;Motor startet&amp;quot; oder &amp;quot;Farbe&amp;quot;.
+Jedes Merkmal hat eine Anzahl von möglichen Ausprägungen, diese entsprechen den Verzweigungen am Knoten. Beispiel: &amp;quot;startet&amp;quot;, &amp;quot;startet nicht&amp;quot; oder &amp;quot;rot&amp;quot;, &amp;quot;weiß&amp;quot;, &amp;quot;silber&amp;quot;, .</description>
+    </item>
+    <item>
+      <title>Pruning</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/pruning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/pruning/</guid>
+      <description>Pruning: Bedingt irrelevante Attribute Baum: $\alpha = x_1(x_2(A, B), x_2(A, B), x_2(A, B))$
+$x_1$ ist bedingt irrelevant =&amp;gt; Vereinfachung: $\alpha = x_2(A, B)$
+Allgemein:
+ Sei $\tilde{x}$ Weg zu Nichtendknoten $x_t$ Baum dort $\alpha/\tilde{x} = x_t(\alpha_1, \ldots, \alpha_{m_t})$ $x_t$ ist bedingt irrelevant unter der Bedingung $\tilde{x}$, wenn $\alpha_1 = \alpha_2 = \ldots = \alpha_{m_t}$ Vereinfachung: Ersetze in $\alpha/\tilde{x}$ den Test $x_t$ durch $\alpha_1$  Anmerkung: Der durch das Entfernen von bedingt irrelevanten Attributen entstandene Baum hat exakt die selbe Aussage (Klassifikation) wie der Baum vor dem Pruning.</description>
+    </item>
+    <item>
+      <title>CAL3</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal3/</guid>
+      <description>CAL3: Erweiterung von CAL2 für nicht-disjunkte Klassen   Anfangsschritt: $\alpha^{(0)} = \ast$ (totales Unwissen)
+  $n$-ter Lernschritt: Objekt $v$ mit Klasse $k$
+  Rückweisung (Endknoten mit $\ast$): Ersetze $\ast$ durch Vereinigungsklasse $/k1/$
+  Endknoten mit Vereinigungsklasse:
+ Zähler für $k$ erhöhen, bzw. $k$ mit Anzahl $1$ in Vereinigungsklasse einfügen    Falls nun die Summe aller Klassen am Endknoten größer/gleich $S_1$ (Statistikschwelle):
+  Für genau eine Klasse gilt: $P(k | \tilde{x}) \ge S_2$: =&amp;gt; Abschluss: Ersetze Vereinigungsklasse durch $k$ (für immer!</description>
+    </item>
+    <item>
+      <title>Entropie</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/entropy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/entropy/</guid>
+      <description>Wie Attribute wählen? Erinnerung: CAL2/CAL3  Zyklische Iteration durch die Trainingsmenge Ausschließlich aktuelles Objekt betrachtet Reihenfolge der &amp;quot;richtigen&amp;quot; Attributwahl bei Verzweigung unklar  =&amp;gt; Betrachte stattdessen die komplette Trainingsmenge!
+Relevanz =&amp;gt; Informationsgehalt  Shannon/Weaver (1949): Entropie  Maß für die Unsicherheit einer Zufallsvariablen Anzahl der Bits zur Darstellung der Ergebnisse eines Zufallsexperiments    Beispiele  Münze, die immer auf dem Rand landet: keine Unsicherheit, 0 Bit Faire Münze: Kopf oder Zahl: Entropie 1 Bit Fairer 4-seitiger Würfel: 4 mögliche Ausgänge: Entropie 2 Bit Münze, die zu 99% auf einer Seite landet: Entropie nahe Null  =&amp;gt; Anzahl der Ja/Nein-Fragen, um zur gleichen Information zu kommen</description>
+    </item>
+    <item>
+      <title>ID3 und C4.5</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/id3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/id3/</guid>
+      <description>Wie Attribute wählen? Erinnerung: CAL2/CAL3
+ Zyklische Iteration durch die Trainingsmenge Ausschließlich aktuelles Objekt betrachtet Reihenfolge der &amp;quot;richtigen&amp;quot; Attributwahl bei Verzweigung unklar  =&amp;gt; Betrachte stattdessen die komplette Trainingsmenge!
+Erinnerung Entropie: Maß für die Unsicherheit   Entropie $H(S)$ der Trainingsmenge $S$: relative Häufigkeit der Klassen zählen
+  Mittlere Entropie nach Betrachtung von Attribut $A$
+$$ R(S, A) = \sum_{v \in \operatorname{Values}(A)} \frac{|S_v|}{|S|} H(S_v) $$   Informationsgewinn durch Betrachtung von Attribut $A$</description>
+    </item>
+  </channel>
+</rss>

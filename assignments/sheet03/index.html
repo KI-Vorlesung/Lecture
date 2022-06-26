@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.96.0" />
+    <meta name="generator" content="Relearn 3.4.1&#43;tip">
+    <meta name="description" content="">
+    <meta name="author" content="cagix">
+    <title>Blatt 03: Spiele   </title>
+    <link rel="icon" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/images/logo.png?1656244436" type="image/png">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/nucleus.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/fontawesome-all.min.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/featherlight.min.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/perfect-scrollbar.min.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/auto-complete.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/theme.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/theme-relearn-light.css?1656244436" rel="stylesheet" id="variant-style">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/variant.css?1656244436" rel="stylesheet">
+    <link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/css/print.css?1656244436" rel="stylesheet" media="print">
+    <style>
+      :not(pre) > code.copy-to-clipboard-code + span.copy-to-clipboard-button {
+        display: none;
+      }
+      :not(pre) > code.copy-to-clipboard-code {
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        border-right-width: 1px;
+      }
+    </style>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/variant.js?1656244436"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/index.json";
+      var root_url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/www.fh-bielefeld.de\/elearning\/data\/FH-Bielefeld\/lm_data\/lm_1166002/';
+      variants.init( [ 'relearn-light', 'relearn-dark', 'green' ] );
+    </script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/jquery.min.js?1656244436"></script><style type="text/css">
+
+ 
+.center {
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+.alert {
+    color: #ff3333;
+}
+.bsp {
+    padding: 0.05cm;
+    border-width: 0.05cm;
+    border-style: solid;
+    border-color: #ddd;
+    background-color: #ddd;
+    border-radius: 25px;
+    float: right;
+}
+.cbox {
+    padding: 0.2cm;
+    border-width: 0.1cm;
+    border-style: solid;
+    border-color: #4070a0;
+    background-color: #f2f2f2;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    overflow: auto;
+}
+.blueArrow {
+    color: #4070a0;
+    font-family: "Courier New", "Courier", monospace;
+    font-weight: bold;
+}
+.origin {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+.showme {
+    background-color: #ededed;
+    font-size: 0.8em;
+}
+
+
+ 
+.tldr {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.recap {
+    
+    
+   margin: 4px 0px 26px 0px;
+}
+.bib {
+    background: #dbe4ed;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.outcomes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.quizzes {
+    background: #d9e9d5;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.challenges {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+.assignments {
+    background: #ebe4d6;
+    padding: 12px;
+    margin: 4px 0px 26px 0px;
+}
+h1.tldr, h1.recap, h1.bib, h1.outcomes, h1.quizzes, h1.challenges, h1.assignments {
+    padding: 0px;
+}
+
+
+ 
+.noJsAlert {
+    padding: 20px;
+    background-color: #f44336;  
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+ 
+.embed-video-player {
+    position: relative;
+    padding-bottom: 56%;
+    height: 0;
+    overflow: hidden;
+}
+.youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border:0;
+}
+
+
+ 
+#header-wrapper {
+    padding:0.6rem;
+}
+
+
+ 
+#shortcuts {
+    padding-top: 2.0rem;
+}
+
+
+ 
+#chapter p {
+    text-align: left;
+}
+
+
+ 
+figcaption h4 {
+    margin-top:-2.5rem;
+}
+.border1 {
+    border:1px solid black;
+}
+
+ 
+td ul, td ol {
+    margin: 0 0 1rem 0.5rem;
+    padding: 0 0 0 0.5rem;
+}
+
+ 
+h1 { font-size:2.8rem !important;}
+h2 { font-size:2.2rem; margin:1.2rem 0}
+h3 { font-size:1.9rem; text-align:left !important; font-weight:400 !important;}
+h4 { font-size:1.6rem}
+h5 { font-size:1.3rem}
+h6 { font-size:1rem}
+
+h2 {
+    width:100% !important;
+    border-bottom:1px solid #5e5e5e !important;
+    padding-bottom: 2px;
+}
+.tldr h2, .recap h2, .bib h2, .outcomes h2, .quizzes h2, .challenges h2, .assignments h2 {
+    margin:0.5rem 0
+}
+
+.btn-crossreference, .btn-crossreference:hover {
+    cursor: initial !important;
+    color: #333 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;
+}
+
+</style>
+
+  </head>
+  <body class="mobile-support" data-url="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet03/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/KI-Vorlesung/Lecture/edit/master/markdown/assignments/sheet03.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/"><span itemprop="name">KI W21</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/"><span itemprop="name">Praktikum</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet03/" aria-disabled="true"><span itemprop="name">Blatt 03: Spiele</span></a></li>
+            </ol>
+          </div>
+          <div class="default-animation progress">
+            <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a31-handsimulation-minimax-und-alpha-beta-pruning-3p">A3.1: Handsimulation: Minimax und alpha-beta-Pruning (3P)</a></li>
+    <li><a href="#a32-optimale-spiele-minimax-und-alpha-beta-pruning-4p">A3.2: Optimale Spiele: Minimax und alpha-beta-Pruning (4P)</a></li>
+    <li><a href="#a33-minimax-vereinfachen-1p">A3.3: Minimax vereinfachen (1P)</a></li>
+    <li><a href="#a34-suchtiefe-begrenzen-1p">A3.4: Suchtiefe begrenzen (1P)</a></li>
+    <li><a href="#a35-minimax-generalisiert-1p">A3.5: Minimax generalisiert (1P)</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+        <p><strong>(Punkte: 10, Abgabe: 27.10.2021)</strong></p>
+    
+
+    <h2 id="a31-handsimulation-minimax-und-alpha-beta-pruning-3p">A3.1: Handsimulation: Minimax und alpha-beta-Pruning (3P)</h2>
+<figure class="center" style="width:auto">
+    <img alt="" src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/images/alphabeta.png" class="" />
+</figure>
+<ol>
+<li>
+<p>(1P) Geben Sie für den Spielbaum die Minimax-Bewertungen an.</p>
+</li>
+<li>
+<p>(1P) Markieren Sie die Kanten, die bei alpha-beta-Pruning nicht mehr
+untersucht werden würden, d.h. wo Pruning stattfinden würde. Geben
+Sie für jeden Knoten die (sich ändernden) <span>$\alpha$</span>- und <span>$\beta$</span>-Werte
+an.</p>
+</li>
+<li>
+<p>(1P) Können die Knoten derart geordnet werden, dass alpha-beta-Pruning
+eine größere Anzahl von Zweigen abschneidet? Wenn ja, geben Sie eine
+solche Ordnung an. Wenn nein, begründen Sie Ihre Antwort.</p>
+</li>
+</ol>
+<p><em>Hinweis</em>: Reihenfolge der Abarbeitung der Kindknoten: Wie in der VL von
+links nach rechts.</p>
+<p><em>Thema</em>: Minimax und alpha-beta-Pruning</p>
+<h2 id="a32-optimale-spiele-minimax-und-alpha-beta-pruning-4p">A3.2: Optimale Spiele: Minimax und alpha-beta-Pruning (4P)</h2>
+<ol>
+<li>
+<p>(2P) Implementieren Sie den Minimax-Algorithmus (wie in der VL
+besprochen) am Beispiel <em>Tic Tac Toe</em> in einer Sprache Ihrer Wahl.</p>
+</li>
+<li>
+<p>(1P) Ergänzen Sie Ihre Implementierung um alpha-beta-Pruning.</p>
+</li>
+<li>
+<p>(1P) Vergleichen Sie die Anzahl der jeweils berechneten Knoten.
+Überlegen Sie sich dazu ein <strong>sinnvolles</strong> Szenario.</p>
+</li>
+</ol>
+<p><em>Thema</em>: Anwendung Minimax und alpha-beta-Pruning</p>
+<h2 id="a33-minimax-vereinfachen-1p">A3.3: Minimax vereinfachen (1P)</h2>
+<p>Vereinfachen Sie den Minimax-Algorithmus aus der Vorlesung, indem Sie die
+Eigenschaft <em>Nullsummenspiel</em> berücksichtigen und die Funktionen <code>Min-Value</code>
+und <code>Max-Value</code> in eine einzige Funktion ohne explizite Unterscheidung der
+Spieler zusammenfassen.</p>
+<p>Überlegen Sie sich einen Beispielbaum und zeigen Sie anhand dessen die
+Bewertung durch den Minimax-Algorithmus und durch Ihren vereinfachten
+Algorithmus.</p>
+<p><em>Thema</em>: Nullsummenspiel, Minimax</p>
+<h2 id="a34-suchtiefe-begrenzen-1p">A3.4: Suchtiefe begrenzen (1P)</h2>
+<p>Die Verwendung der Suchtiefenbeschränkung erfordert den Einsatz einer
+Evaluierungsfunktion.</p>
+<p>Betrachten Sie die auf
+<a href="https://aimacode.github.io/aima-exercises/game-playing-exercises/ex_9/">https://github.com/aimacode/aima-exercises/blob/master/markdown/5-Adversarial-Search/exercises/ex_9/question.md</a>
+gegebene Evaluierungsfunktion für <em>Tic-Tac-Toe</em>.</p>
+<p>Geben Sie die Werte der Evaluierungsfunktion für sechs verschiedene
+Spielzustände an (3 Endzustände, 3 Zwischenzustände). Begründen Sie, warum
+diese Evaluierungsfunktion im Zusammenhang mit <em>Tic-Tac-Toe</em> sinnvoll sein kann.</p>
+<p><em>Thema</em>: Suchtiefenbegrenzung und Evaluierungsfunktion</p>
+<h2 id="a35-minimax-generalisiert-1p">A3.5: Minimax generalisiert (1P)</h2>
+<p>Betrachten Sie nun das Problem, den Spielbaum eines Drei-Personen-Spiels zu
+evaluieren, das nicht notwendigerweise die Nullsummenbedingung erfüllt.</p>
+<figure class="center" style="width:auto">
+    <img alt="" src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/images/minmax-multiplayer.png" class="" />
+</figure>
+<p>Die Spieler heißen 1, 2 und 3. Im Gegensatz zu Zwei-Personen-Nullsummenspielen
+liefert die Bewertungsfunktion nun Tripel <span>$(x_1, x_2, x_3)$</span> zurück, wobei <span>$x_i$</span>
+der Wert für Spieler <span>$i$</span> ist. Allianzen zwischen Spielern sind nicht erlaubt.</p>
+<p>Vervollständigen Sie den Spielbaum, indem Sie alle inneren Knoten und den
+Wurzelknoten mit den entsprechenden Wert-Tripeln annotieren.</p>
+<p><em>Thema</em>: Minimax generalisiert für mehrere Spieler</p>
+
+
+
+
+
+        </div>
+      </main><p><div style="color: darkgray; font-size: smaller;">
+<p style="margin-left: 1rem;">
+    <!-- https://creativecommons.org/choose/ -->
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;margin:0;display:inline;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> Unless otherwise noted, <a href="https://github.com/KI-Vorlesung/Lecture">this work</a> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/cyildiz" property="cc:attributionName" rel="cc:attributionURL">Canan Yıldız</a>, <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/cagix" property="cc:attributionName" rel="cc:attributionURL">Carsten Gips</a>, and <a href="https://github.com/KI-Vorlesung/Lecture/graphs/contributors">contributors</a> is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+<br />
+    Icons by <a href="https://fontawesome.com/">Font Awesome</a>.
+    Built with <a href="https://github.com/jgm/pandoc">Pandoc</a> using <a href="https://github.com/cagix/pandoc-lecture">Pandoc-Lecture</a> and <a href="https://github.com/gohugoio/hugo">Hugo</a> using the <a href="https://github.com/McShelby/hugo-theme-relearn">Hugo Relearn Theme</a>.
+</p>
+</div>
+<div style="color: darkgray; font-size: smaller;">
+</p>
+
+    </div>
+    <aside id="sidebar" class="default-animation showVisitedLinks">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
+<a id="logo" href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002'>
+    <img style="max-width:35%" alt="icon" src='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/images/logo.png'>
+</a>
+
+        </div>
+      </div>
+      <div id="content-wrapper" class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/intro/" title="Einführung KI" class="dd-item"><input type="checkbox" id="section-925e5bfbd01266c727d74ae1db5ab0c6" class="toggle"/><label for="section-925e5bfbd01266c727d74ae1db5ab0c6" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/">Einführung KI<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/intro/intro-ai/" title="Intro: Was ist Künstliche Intelligenz?" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/intro-ai/">Einführung KI<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/intro/problems/" title="Problemlösen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/problems/">Problemlösen<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/" title="Suche" class="dd-item"><input type="checkbox" id="section-08cfb6301b533c954681b7845aa7e62a" class="toggle"/><label for="section-08cfb6301b533c954681b7845aa7e62a" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/">Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/uninformed/" title="Uninformierte Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-81ce67a4c4f848b49be6e8b0a77d0660" class="toggle" checked/><label for="section-81ce67a4c4f848b49be6e8b0a77d0660" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/">Uninformierte Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/uninformed/dfs/" title="Suche mit Tiefensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/dfs/">Tiefensuche<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/uninformed/bfs/" title="Suche mit Breitensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/bfs/">Breitensuche<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/informed/" title="Informierte Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-e57a324c0a87423ed05b8615c3fc14c6" class="toggle" checked/><label for="section-e57a324c0a87423ed05b8615c3fc14c6" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/">Informierte Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/informed/branchandbound/" title="Suche mit Branch-and-Bound" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/branchandbound/">Branch-and-Bound<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/informed/bestfirst/" title="Suche mit Best First" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/bestfirst/">Best First<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/informed/astar/" title="Suche mit A*" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/informed/astar/">A*<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/search/local/" title="Lokale Suche" class="dd-item alwaysopen"><input type="checkbox" id="section-3df58c316d8cceefc4f029351d45366f" class="toggle" checked/><label for="section-3df58c316d8cceefc4f029351d45366f" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/">Lokale Suche<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/search/local/gradient/" title="Lokale Suche: Gradientensuche" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/gradient/">Gradientensuche<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/search/local/annealing/" title="Lokale Suche: Simulated Annealing" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/">Simulated Annealing<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li>
+          <li data-nav-id="/ea/" title="Genetische Algorithmen" class="dd-item"><input type="checkbox" id="section-4427743bb3613ebd9fb288dea49d1f12" class="toggle"/><label for="section-4427743bb3613ebd9fb288dea49d1f12" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/">Genetische Algorithmen<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/ea/intro/" title="Einführung Evolutionäre Algorithmen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/intro/">Intro EA/GA<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/ea/ga/" title="Modellierung mit Genetischen Algorithmen" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/ga/">Genetische Algorithmen<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/games/" title="Spiele" class="dd-item"><input type="checkbox" id="section-dcab5a097c2e0bc19131dd59a2fac20e" class="toggle"/><label for="section-dcab5a097c2e0bc19131dd59a2fac20e" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/">Spiele<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/games/intro/" title="Einführung Optimale Spiele" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/intro/">Optimale Spiele<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/minimax/" title="Minimax" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/minimax/">Minimax<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/heuristics/" title="Heuristiken" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/heuristics/">Heuristiken<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/games/alphabeta/" title="Alpha-Beta-Pruning" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/alphabeta/">Alpha-Beta-Pruning<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/csp/" title="Constraintsolving" class="dd-item"><input type="checkbox" id="section-af49da79e06eb6041df4c439c33a1423" class="toggle"/><label for="section-af49da79e06eb6041df4c439c33a1423" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/">CSP<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/csp/intro/" title="Einführung Constraints" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/intro/">Intro<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/backtrackingsearch/" title="Lösen von diskreten CSP" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/backtrackingsearch/">Lösen von diskreten CSP<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/heuristics/" title="Heuristiken" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/heuristics/">Heuristiken<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/csp/ac3/" title="Kantenkonsistenz und AC-3" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/ac3/">AC-3<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/dtl/" title="Entscheidungsbäume" class="dd-item"><input type="checkbox" id="section-4574116219561e15eeac8b4524c3245f" class="toggle"/><label for="section-4574116219561e15eeac8b4524c3245f" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/">Entscheidungsbäume<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/dtl/mlbasics/" title="Machine Learning 101" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/mlbasics/">Machine Learning 101<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/cal2/" title="CAL2" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal2/">CAL2<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/pruning/" title="Pruning" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/pruning/">Pruning<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/cal3/" title="CAL3" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/cal3/">CAL3<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/entropy/" title="Entropie" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/entropy/">Entropie<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/dtl/id3/" title="ID3 und C4.5" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/id3/">ID3 und C4.5<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/naivebayes/" title="Naive Bayes" class="dd-item"><input type="checkbox" id="section-2de9e17830839ea2a34b596e2636549b" class="toggle"/><label for="section-2de9e17830839ea2a34b596e2636549b" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/">Naive Bayes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/naivebayes/probability/" title="Wiederholung Wahrscheinlichkeitstheorie" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/probability/">Wahrscheinlichkeiten<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/naivebayes/nb/" title="Klassifikation mit Naive Bayes" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/">Naive Bayes<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/nn/" title="NN: Einführung in Neuronale Netze" class="dd-item"><input type="checkbox" id="section-59dd9ac0a3ddcf6aaf56356bae885f3c" class="toggle"/><label for="section-59dd9ac0a3ddcf6aaf56356bae885f3c" ></label><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/">Neuronale Netze<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/nn/nn1_perceptron/" title="NN1 - Das Perzeptron" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn1_perceptron/">NN1 - Perzeptron<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn2_linear_regression/" title="NN2 - Lineare Regression" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn2_linear_regression/">NN2 - Lineare Regression<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn3_logistic_regression/" title="NN3 - Logistische Regression" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn3_logistic_regression/">NN3 - Logistische Regression<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn4_overfitting/" title="NN4 - Overfitting und Regularisierung" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn4_overfitting/">NN4 - Overfitting<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn5_mlp/" title="NN5 - Multilayer Perzeptron" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn5_mlp/">NN5 - MLP<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn6_backprop/" title="NN6 - Backpropagation" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn6_backprop/">NN6 - Backpropagation<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn7_training_testing/" title="NN7 - Training &amp; Testing" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn7_training_testing/">NN7 - Training &amp; Testing<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/nn/nn8_testing/" title="NN8 - Performanzanalyse" class="dd-item"><a href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/nn8_testing/">NN8 - Performanzanalyse<i class="fas fa-check read-icon"></i></a></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/schedule"><i class='fas fa-bookmark'></i> Fahrplan</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments"><i class='fas fa-bookmark'></i> Praktikum</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/grading"><i class='fas fa-bookmark'></i> Note/Credits</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/syllabus"><i class='fas fa-bookmark'></i> Syllabus</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/resources"><i class='fas fa-bookmark'></i> Ressourcen</a></li>
+            <li><a class="padding" href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/org/exam"><i class='fas fa-bookmark'></i> Prüfungsvorbereitung</a></li>
+          </ul>
+        </div>
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVariantSwitch showVisitedLinks">
+          <ul>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch showVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="relearn-dark" value="relearn-dark">Relearn Dark</option>
+                    <option id="green" value="green">Green</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+          </ul>
+        </div>
+        <div id="footer" class="footerFooter showFooter"><p style="margin-left: 1rem;">
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/imprint'>Impressum</a>,
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/privacy'>Datenschutz</a>,
+    <a href='https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/credits'>Credits</a>
+</p>
+
+        </div>
+      </div>
+    </aside>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/clipboard.min.js?1656244436"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/perfect-scrollbar.min.js?1656244436"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/featherlight.min.js?1656244436"></script>
+    <script src="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/js/theme.js?1656244436"></script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+</script>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </body>
+</html>
+

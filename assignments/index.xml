@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Praktikum on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/</link>
+    <description>Recent content in Praktikum on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blatt 01: Problemlösen, Suche</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet01/</guid>
+      <description>A1.1: Möglichkeiten und Grenzen der KI (1P) Recherchieren Sie, welche Probleme bereits mittels Computer- bzw. Robotereinsatz gelöst werden können und welche aktuell noch ungelöst sind.
+Thema: Gefühl für bereits realisierbare Aufgaben
+A1.2: Auswirkungen der KI (1P) Recherchieren Sie Auswirkungen auf die Gesellschaft durch die KI, etwa durch autonomes Fahren.
+Thema: Chancen und Risiken, Ethik
+A1.3: Problemformalisierung, Zustandsraum (2P) Drei Elben und drei Orks befinden sich an einem Ufer eines Flusses und wollen diesen überqueren.</description>
+    </item>
+    <item>
+      <title>Blatt 02: Lokale Suche, GA</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet02/</guid>
+      <description>A2.1: Modellierung von GA (2P) Folgende Probleme sollen mit einem GA gelöst werden:
+  das Travelling Salesman Problem für 10 Städte, d.h. das Finden der kürzesten Route zwischen 10 Städten,
+  ein $9 \times 9$-Sudoku-Rätsel,
+  das $n$-Queens-Problem (für ein beliebiges, aber festes $n$).
+  Geben Sie für diese Probleme jeweils eine geeignete Kodierung der Individuen, passende Operatoren (Crossover, Mutation) und eine geeignete Fitnessfunktion an, damit das Problem mit einem GA gelöst werden kann.</description>
+    </item>
+    <item>
+      <title>Blatt 03: Spiele</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet03/</guid>
+      <description>A3.1: Handsimulation: Minimax und alpha-beta-Pruning (3P)    (1P) Geben Sie für den Spielbaum die Minimax-Bewertungen an.
+  (1P) Markieren Sie die Kanten, die bei alpha-beta-Pruning nicht mehr untersucht werden würden, d.h. wo Pruning stattfinden würde. Geben Sie für jeden Knoten die (sich ändernden) $\alpha$- und $\beta$-Werte an.
+  (1P) Können die Knoten derart geordnet werden, dass alpha-beta-Pruning eine größere Anzahl von Zweigen abschneidet? Wenn ja, geben Sie eine solche Ordnung an.</description>
+    </item>
+    <item>
+      <title>Blatt 04: Constraints</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet04/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet04/</guid>
+      <description>A4.1: Logikrätsel (2P) Betrachten Sie die Variante des berühmten &amp;quot;Einstein-Rätsels&amp;quot; auf Wikipedia.
+Formulieren Sie das Problem als CSP (Variablen, Wertebereiche, Constraints) auf dem Papier.
+Hinweis: Machen Sie sich zunächst klar, was die Variablen und was deren Wertebereiche sind. Schreiben Sie die Constraints als (unäre bzw. binäre) Relationen auf.
+Thema: Formulierung von Problemen als CSP
+A4.2: Framework für Constraint Satisfaction (2P) Checken Sie das AIMA-Repository github.com/aimacode/aima-java aus. Im Paket aima.core.search.csp finden Sie Java-Klassen zum Umgang mit CSPs sowie einige der in der VL besprochenen Algorithmen und Heuristiken.</description>
+    </item>
+    <item>
+      <title>Blatt 05: Entscheidungsbäume</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet05/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet05/</guid>
+      <description>A5.1: Handsimulation CAL2 (2P) Zeigen Sie mit einer Handsimulation, wie CAL2 mit dem folgenden Trainingsdatensatz schrittweise einen Entscheidungsbaum generiert. Nutzen Sie die linearisierte Schreibweise.
+   Beispiel $x_1$ $x_2$ $x_3$ Klasse     1 a a a 1   2 a b a 2   3 a a b 1   4 b a b 1   5 a a c 1   6 b b b 2    Thema: Anwendung von CAL2</description>
+    </item>
+    <item>
+      <title>Blatt 06: Perzeptron, Lineare Regression</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet06/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet06/</guid>
+      <description>ul { list-style-type: lower-alpha; } ul ul { list-style-type: circle; }  A6.1: Entscheidungsgrenze (2P)  (1P) Betrachten Sie das durch den Gewichtsvektor $ (w_0,w_1,w_2)^T = (2, 1, 1)^T $ gegebene Perzeptron. Zeichnen Sie die Trennebene und markieren Sie den Bereich, der mit $+1$ klassifiziert wird. (1P) Welche der folgenden Perzeptrons haben die selbe Trennebene? Welche weisen exakt die gleiche Klassifikation auf?  $ (w_0,w_1,w_2)^T = (1, 0.5, 0.5)^T $ $ (w_0,w_1,w_2)^T = (200, 100, 100)^T $ $(w_0,w_1,w_2)^T = (\sqrt{2}, \sqrt{1}, \sqrt{1})^T$ $ (w_0,w_1,w_2)^T = (-2, -1, -1)^T $    Thema: Verständnis Interpretation Perzeptron (Trennebene/Entscheidungsgrenze)</description>
+    </item>
+    <item>
+      <title>Blatt 07: Logistische Regression</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet07/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet07/</guid>
+      <description>A7.1: Logistische Regression (6P)   (1P)
+ Konstruieren Sie einen Datensatz $\mathcal{D}$ mit $m=100$ gleichförmig verteilten Zufallspunkten aus dem Bereich $ = [−1, 1] $. Wählen Sie auf ähnliche Weise zwei zufällige, gleichmäßig verteilte Punkte aus dem Bereich $ [−1, 1] $. Verwenden Sie die Gerade, die durch diese zwei Punkte verläuft, als die Entscheidungsgrenze ihrer Zielfunktion $f$: Punkte auf der einen Seite der Linie sollen als +1 und die anderen als −1 klassifiziert werden.</description>
+    </item>
+    <item>
+      <title>Blatt 08: Overfitting &amp; MLP</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet08/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet08/</guid>
+      <description>A8.1: Lineares MLP (2P) Gegeben sei ein MLP mit linearen Aktivierungsfunktionen, d.h. für jedes Neuron berechnet sich der Output durch die gewichtete Summe der Inputs: $ y = g(w^T x) $, wobei $ g(z) = z $ gilt, also $ y = w^T x $. Zeigen Sie, dass dieses Netz durch eine einzige Schicht mit linearen Neuronen ersetzt werden kann. Betrachten Sie dazu ein zweilagiges Netz bestehend aus einer Ausgabe- und einer versteckten Schicht.</description>
+    </item>
+    <item>
+      <title>Blatt 09: Backpropagation</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet09/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet09/</guid>
+      <description>A9.1: Backpropagation: Hidden Layer (2P) In der Vorlesung wurde(n) die Gewichtsupdates bei der Backpropagation für die Ausgabeschicht und die davor liegende letzte versteckte Schicht hergeleitet, wobei in der Ausgabeschicht die Sigmoid und in der versteckten Schicht die ReLU Aktivierungsfunktionen eingesetzt wurden. Leiten Sie die Gewichtsupdates für die erste versteckte Schicht (für ein Netz mit zwei echten versteckten Schichten) her. Verwenden Sie dabei die Sigmoid Funktion als Aktivierung in allen Schichten.</description>
+    </item>
+    <item>
+      <title>Blatt 10: Testing und Validierung</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/assignments/sheet10/</guid>
+      <description>ul { list-style-type: lower-alpha; } ul ul { list-style-type: circle; }  A10.1: Fehlerhafter Einsatz der Testdaten (2P) Wo genau liegt das Problem in dem folgenden Lernszenario in Abbildung 1? Geben Sie eine ausführliche Beschreibung.
+Abbildung 1 - Einsatz der Testdaten gegen Überanpassung  Thema: Verständnis &amp;quot;Data Leakage&amp;quot; im Lernprozess
+A10.2: Regularisierungsparameter (2P) Sie haben ein relativ komplexes Neuronales Netzwerk für Ihr Klassifizierungsproblem gewählt und möchten dafür einen guten Regularisierungsparameter $\lambda$ bestimmen (fine-tuning).</description>
+    </item>
+  </channel>
+</rss>

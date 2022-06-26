@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KI W21 on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/</link>
+    <description>Recent content in KI W21 on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Einführung KI</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/intro/</guid>
+      <description>Einführung KI Was ist Intelligenz? Was ist künstliche Intelligenz? Woran kann man das erkennen? Wie kann man eine Welt (ein Problem) modellieren, um es dann anschließend lösen zu können?
+Intro: Was ist Künstliche Intelligenz? Problemlösen  </description>
+    </item>
+    <item>
+      <title>Suche</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/</guid>
+      <description>Suche Problemlösen durch Suche im Problemgraphen. Aus den Basisalgorithmen Tree-Search und Graph-Search entstehen je nach verwendeter Datenstruktur und nach betrachteten Kosten unterschiedliche Suchalgorithmen.
+Uninformierte Suche Informierte Suche Lokale Suche  </description>
+    </item>
+    <item>
+      <title>Genetische Algorithmen</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/</guid>
+      <description>Genetische Algorithmen Lokale Suche mit Methoden, die der biologischen Evolution abgeschaut bzw. nachempfunden sind.
+Einführung Evolutionäre Algorithmen Modellierung mit Genetischen Algorithmen  </description>
+    </item>
+    <item>
+      <title>Spiele</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/games/</guid>
+      <description>Spiele Man kann Spiele auch als Suchproblem betrachten und als Ziel die Suche nach dem optimalen Zug definieren.
+Einführung Optimale Spiele Minimax Heuristiken Alpha-Beta-Pruning  </description>
+    </item>
+    <item>
+      <title>Constraintsolving</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/</guid>
+      <description>Constraintsolving Was haben Typ-Inferenz, Sudoku, das 8-Queens-Problem, das Einfärben von Landkarten und das Erstellen von Stundenplänen gemeinsam?
+Es handelt sich um eine bestimmte Art von Suchproblemen, wobei den Parametern (Variablen) Werte so zugewiesen werden müssen, dass Einschränkungen bzw. Relationen zwischen den Variablen gelten.
+Einführung Constraints Lösen von diskreten CSP Heuristiken Kantenkonsistenz und AC-3  </description>
+    </item>
+    <item>
+      <title>Entscheidungsbäume</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/dtl/</guid>
+      <description>Entscheidungsbäume Beim überwachten Lernen soll eine Hypothese aufgebaut werden, die der echten (zu lernenden) Funktion möglichst nahe kommt. Eine Hypothese kann im einfachsten Fall als Entscheidungsbaum dargestellt werden. Die Merkmale bilden dabei die Knoten im Baum, und je Ausprägung gibt es eine Kante zu einem Nachfolgerknoten. Ein Merkmal bildet die Wurzel des Baums, an den Blättern sind die Klassen zugeordnet.
+Einen Entscheidungsbaum kann man zur Klassifikation eines Objekts schrittweise durchlaufen: Für jeden Knoten fragt man die Ausprägung des Merkmals im Objekt ab und wählt den passenden Ausgang aus dem Knoten.</description>
+    </item>
+    <item>
+      <title>Naive Bayes</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/</guid>
+      <description>Naive Bayes Ich habe Symptome beobachtet. Kann ich die Ursache (also die Krankheit) bestimmen, wenn ich etwas Hintergrundwissen habe:
+ Wie häufig treten verschieden Krankheiten auf Welche Krankheit zeigt welche Symptome (und wie oft treten die dann auf)  Kann ich aus diesen Daten einen Klassifikator lernen?
+Wiederholung Wahrscheinlichkeitstheorie Klassifikation mit Naive Bayes  </description>
+    </item>
+    <item>
+      <title>NN: Einführung in Neuronale Netze</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/nn/</guid>
+      <description>NN: Einführung in Neuronale Netze Das Perzeptron kann als die Nachahmung einer biologischen Nervenzelle betrachtet werden. Durch das Zusammenschließen dieser &amp;quot;künstlichen &amp;quot;Nervenzellen&amp;quot; entstehen künstliche Neuronale Netze (NN), die ähnlich wie das Gehirn lernen sollen, komplexe Aufgaben zu bewerkstelligen.
+NN1 - Das Perzeptron NN2 - Lineare Regression NN3 - Logistische Regression NN4 - Overfitting und Regularisierung NN5 - Multilayer Perzeptron NN6 - Backpropagation NN7 - Training &amp;amp; Testing NN8 - Performanzanalyse  </description>
+    </item>
+  </channel>
+</rss>

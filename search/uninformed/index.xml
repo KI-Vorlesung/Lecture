@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uninformierte Suche on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/</link>
+    <description>Recent content in Uninformierte Suche on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Suche mit Tiefensuche</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/dfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/dfs/</guid>
+      <description>Hole das Buch   Das Beispiel ist ein Büroflur in der Uni. Neben den Büros gibt es eine Bibliothek und einen Kopiererraum, wo auch der Roboter sich gerade aufhält. Die Aufgabe für den Roboter lautet: Hole das Buch aus der Bibliothek (und bringe es zum Kopier). (Damit das Beispiel und der sich daraus ergebende Problemgraph nicht zu groß und zu unübersichtlich werden, soll das Ziel hier darin liegen, dass der Roboter das Buch in der Bibliothek aufnimmt.</description>
+    </item>
+    <item>
+      <title>Suche mit Breitensuche</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/bfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/uninformed/bfs/</guid>
+      <description>Hole das Buch   =&amp;gt; Problemlösen == Suche im Graphen
+Uninformierte (&amp;quot;blinde&amp;quot;) Suche:
+Keine Informationen über die Kosten eines Pfades: Nur die Pfadlänge (Anzahl der Schritte) zählt.
+Varianten:
+ Tiefensuche Breitensuche  Breitensuche (BS, BFS) Erinnerung Graph-Search
+ Füge Startknoten in leere Datenstruktur (Stack, Queue, ...) ein Entnehme Knoten aus der Datenstruktur:  Knoten ist gesuchtes Element: Abbruch, melde &amp;quot;gefunden&amp;quot; Markiere aktuellen Knoten, und Expandiere alle Nachfolger des Knotens und füge alle unmarkierten Nachfolger, die noch nicht in der Datenstruktur sind, in die Datenstruktur ein   Falls die Datenstruktur leer ist: Abbruch, melde &amp;quot;nicht gefunden&amp;quot; Gehe zu Schritt 2  =&amp;gt; Was passiert, wenn wir eine Queue einsetzen?</description>
+    </item>
+  </channel>
+</rss>

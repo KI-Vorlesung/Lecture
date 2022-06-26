@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lokale Suche on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/</link>
+    <description>Recent content in Lokale Suche on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lokale Suche: Gradientensuche</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/gradient/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/gradient/</guid>
+      <description>Unterschiede in den Suchproblemen?      Bisher betrachtete Suchverfahren:
+ Systematische Erkundung des Suchraums Weg zur Lösung wichtig  =&amp;gt; Oft aber nur das Ziel an sich interessant! (Und nicht, wie man dort hin gelangt.)
+Beispiel: Stundenplan
+Analogie: Bergsteigen ohne Karte und Pfade   Gradienten-Suche: &amp;quot;Gehe in Richtung des steilsten Anstiegs der Zielfunktion.&amp;quot;
+=&amp;gt; Schrittweise Verbesserung des aktuellen Zustands (Lokale Suche)
+ Verschiedene Namen: &amp;quot;Hill-climbing&amp;quot;, &amp;quot;Greedy local search&amp;quot; Kann auch als Minimierung angewendet werden  Pseudoalgorithmus Gradientensuche &amp;quot;Wie Bergsteigen am Mount Everest in dickem Nebel mit Gedächtnisverlust&amp;quot;</description>
+    </item>
+    <item>
+      <title>Lokale Suche: Simulated Annealing</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/search/local/annealing/</guid>
+      <description>Motivation   Problem: lokale Maxima und Plateaus
+ Lokale Maxima/Minima: Algorithmus findet nur eine suboptimale Lösung Plateaus: Hier muss der Algorithmus mit zufälligen Zügen explorieren  Mögliche Lösungen:
+ Neustart des Algorithmus, wenn kein Fortschritt erzielt wird Rauschen &amp;quot;injizieren&amp;quot;  Gedankenexperiment: Ausweg aus lokalen Minima  &amp;quot;Drehen der Landschaft&amp;quot;: Minimieren statt Maximieren Ball wird in Zustandsraum-Landschaft gesetzt. Folge:  rollt steilsten Abstieg hinunter rollt evtl. in Tal auf halber Höhe (lokales Minimum) =&amp;gt; bleibt dort gefangen    =&amp;gt; &amp;quot;Schütteln der Landschaft&amp;quot; -- Ball springt aus dem Tal und rollt in anderes Tal</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Constraintsolving on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/</link>
+    <description>Recent content in Constraintsolving on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Einführung Constraints</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/intro/</guid>
+      <description>Motivation: Einfärben von Landkarten   Die Skizze soll eine Landkarte mit verschiedenen Ländern darstellen. Die Aufgabe lautet: Färbe jedes Land mit einer Farbe ein, um die Übersichtlichkeit zu erhöhen. Verwende dabei so wenig wie möglich unterschiedliche Farben. Aneinander grenzende Länder müssen unterschiedliche Farben bekommen (=&amp;gt; Constraint).
+Einfärben von Landkarten: Formalisierung   Variablen: A, B, C, D, E, F
+  Werte: $\lbrace red, green, blue \rbrace$
+  Constraints: Benachbarte Regionen müssen unterschiedliche Farben haben</description>
+    </item>
+    <item>
+      <title>Lösen von diskreten CSP</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/backtrackingsearch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/backtrackingsearch/</guid>
+      <description>Einfärben von Landkarten als CSP   Tafelbeispiel: Suche nach Lösung   Endliche Domänen: Formulierung als Suchproblem def BT_Search(assignment, csp):  if complete(assignment): return assignment   var = VARIABLES(csp, assignment)   for value in VALUES(csp, var):  if consistent(value, var, assignment, csp):  assignment += {var = value}   if INFERENCE(csp, assignment, var) != failure:  result = BT_Search(assignment, csp)  if result != failure: return result   assignment -= {var = value}   return failure Quelle: Eigener Code basierend auf einer Idee nach [Russell2020, S.</description>
+    </item>
+    <item>
+      <title>Heuristiken</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/heuristics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/heuristics/</guid>
+      <description>VARIABLES: Variablen-Sortierung, Welche Variable soll betrachtet werden?   VARIABLES: Welche Variable zuerst ausprobieren?
+Minimum Remaining Values (MRV): (vgl. [Russell2020, S. 177])
+  Wähle Variable mit wenigsten freien Werten (die am meisten eingeschränkte Variable)
+=&amp;gt; reduziert den Verzweigungsgrad
+  Tafelbeispiel   Beispiel:
+ Freie Auswahl, alle haben gleich viele freie Werte (jeweils 3) =&amp;gt; wähle A B und C haben nur noch zwei freie Werte =&amp;gt; wähle B (oder C) C hat nur noch einen Wert, D noch zwei, der Rest drei =&amp;gt; wähle C  VARIABLES: Gleichstand bei MRV   VARIABLES: Welche Variable zuerst ausprobieren?</description>
+    </item>
+    <item>
+      <title>Kantenkonsistenz und AC-3</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/ac3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/csp/ac3/</guid>
+      <description>Problem bei BT-Suche Zuweisung eines Wertes an Variable $X$:
+ Passt zu aktueller Belegung Berücksichtigt aber nicht restliche Constraints =&amp;gt; macht weitere Suche u.U. unmöglich/schwerer  Lösung: Nach Zuweisung alle nicht zugewiesenen Nachbarvariablen prüfen
+INFERENCE: Vorab-Prüfung (Forward Checking)   Inference: Frühzeitiges Erkennen von Fehlschlägen! (vgl. [Russell2020, S. 178])
+Nach Zuweisung eines Wertes an Variable $X$:
+ Betrachte alle nicht zugewiesenen Variablen $Y$:  Falls Constraints zw. $X$ und $Y$, dann .</description>
+    </item>
+  </channel>
+</rss>

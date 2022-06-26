@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Naive Bayes on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/</link>
+    <description>Recent content in Naive Bayes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wiederholung Wahrscheinlichkeitstheorie</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/probability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/probability/</guid>
+      <description>Ereignisse und Wahrscheinlichkeit Hinweis: Die folgende Darstellung zur Einführung in die Wahrscheinlichkeitstheorie dient dem Verständnis des Naive Bayes Klassifikationsalgorithmus und ist teilweise eher oberflächlich gehalten. Sie kann und soll keine entsprechende mathematische Einführung ersetzen!
+Ereignisse   Ereignisse $\Omega = \lbrace \omega_1, \omega_2, \ldots, \omega_n \rbrace$: endliche Menge der Ausgänge eines Zufallsexperiments
+  Elementarereignis: Die $\omega_i \in \Omega$
+ decken alle möglichen Versuchsergebnisse ab, und schließen sich gegenseitig aus    Regeln  Wenn $A$ und $B$ Ereignisse sind, dann auch $A \cup B$ $\Omega$ wird als sicheres Ereignis bezeichnet: Enthält definitionsgemäß alle Versuchsausgänge, d.</description>
+    </item>
+    <item>
+      <title>Klassifikation mit Naive Bayes</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/naivebayes/nb/</guid>
+      <description>Medizinische Diagnostik mit NB  Bei Arthrose wird in 80 Prozent der Fälle ein steifes Gelenk beobachtet: $P(S|A) = 0.8$ Eine von 10.000 Personen hat Arthrose: $P(A) = 0.0001$ Eine von 10 Personen hat ein steifes Gelenk: $P(S) = 0.1$  =&amp;gt; Ich habe ein steifes Gelenk. Habe ich Arthrose?
+Textklassifikation mit NB   Mails, manuell markiert:
+ D1: (&amp;quot;Sieben Zwerge fraßen sieben Ziegen&amp;quot;, OK) D2: (&amp;quot;Sieben Ziegen traten sieben Wölfe&amp;quot;, SPAM) D3: (&amp;quot;Sieben Wölfe fraßen sieben Böcke&amp;quot;, OK) D4: (&amp;quot;Sieben Böcke traten sieben Zwerge&amp;quot;, SPAM)    Neue Mails:</description>
+    </item>
+  </channel>
+</rss>

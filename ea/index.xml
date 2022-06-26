@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Genetische Algorithmen on </title>
+    <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/</link>
+    <description>Recent content in Genetische Algorithmen on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language><atom:link href="https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Einführung Evolutionäre Algorithmen</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/intro/</guid>
+      <description>Evolution sehr erfolgreich bei Anpassung  Quelle: Photo by Johannes Plenio on Unsplash (Unsplash License)
+ Wie funktioniert&#39;s?
+ kurze Diskussion   EA -- Zutaten und Mechanismen   Zutaten:
+ Individuen: Kodierung möglicher Lösungen Population von Individuen Fitnessfunktion: Bewertung der Angepasstheit    Mechanismen (&amp;quot;Operatoren&amp;quot;):
+ Selektion Rekombination (Crossover) Mutation    EA -- Allgemeiner Ablauf   EA -- Beispiel   Jedes Individuum kodiert ein Spielfeld mit einer konkreten Anordnung aller Königinnen =&amp;gt; Vollständige Zustandsbeschreibung.</description>
+    </item>
+    <item>
+      <title>Modellierung mit Genetischen Algorithmen</title>
+      <link>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/ga/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_1166002/ea/ga/</guid>
+      <description>EA -- Allgemeiner Ablauf   Kodierung Individuen   Binäre Lösungsrepräsentation (Bitstring): $\mathbf{g} = (g_1, \dots, g_m)\in { 0,1}^m$
+ String gliedert sich in $n$ Elemente (mit $n \le m$) =&amp;gt; jedes Segment entspricht einer Problemvariablen Dekodierungsfunktion $\Gamma : {0,1}^m \to \mathbb{R}^n$  Alle relevanten Aspekte des Problems müssen in die Codierung einfließen!
+Bei ES hat man einen Vektor mit reellen Zahlen, wobei jeder Eintrag einen Parameter des Problems darstellt.</description>
+    </item>
+  </channel>
+</rss>
